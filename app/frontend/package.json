@@ -1,0 +1,21 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "source": "login.html",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "parcel": "^2.12.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "rdist":"npx rimraf dist",
+    "start": "parcel login.html",
+    "build": "parcel build login.html&&parcel build signup.html&&parcel build reset.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "buffer": "^6.0.3"
+  }
+}

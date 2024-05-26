@@ -1,0 +1,488 @@
+/* in media queries the default font-size is 16px so 1rem=1em=16px 
+and we use em because sometimes rem may face problems in media queries.
+(only to set viewport width in the media query I am using em)
+*/
+
+/* ****************************** */
+/* *******(FOR below 1344px)******* */
+/* ****************************** */
+
+/* @media (max-width: 84em) {
+} */
+
+/* ****************************** */
+/* *******(FOR below 1200px)******* */
+/* ****************************** */
+
+@media (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+
+  .gallery li {
+    height: 30vw;
+  }
+  .themes.grid--3--cols {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.4rem;
+  }
+
+  .card:last-child .image-box {
+    height: auto;
+  }
+
+  .card:nth-child(odd) .image-box-text {
+    position: static;
+    text-align: left;
+    margin-top: 0.8rem;
+  }
+
+  .video {
+    height: 50rem;
+  }
+
+  .section-locations-header {
+    margin-right: -30%;
+  }
+
+  .locations {
+    column-gap: 1.2rem;
+  }
+
+  .section-form {
+    margin-left: 0;
+    margin-right: 0;
+    justify-content: right;
+    box-sizing: content-box;
+    padding: 9.6rem;
+  }
+}
+
+/* ****************************** */
+/* *******(FOR below 940px)******* */
+/* ****************************** */
+/* strange thing */
+/* /* tried setting 940px but the browser is not responding, it is okay with 980px  which is 61.25em*  but solved by adding meta viewport tag/  */
+
+@media (max-width: 58em) {
+  .nav-links {
+    width: 50%;
+  }
+  .section-locations-header {
+    margin-right: -70%;
+  }
+  .form {
+    row-gap: 1.2rem;
+  }
+
+  .section-form.grid {
+    grid-template-columns: 1fr;
+    padding: 6.4rem 3.2rem;
+  }
+}
+
+/* ****************************** */
+/* *******(FOR below 770px)******* */
+/* ****************************** */
+
+@media (max-width: 48em) {
+  .heading-primary {
+    font-size: 5.2rem;
+  }
+
+  .heading-secondary {
+    font-size: 4.4rem;
+  }
+  /* .nav {
+    position: static;
+  } */
+
+  .nav-logo {
+    margin-left: -2rem;
+  }
+
+  .nav-btn {
+    display: block;
+  }
+
+  .nav-links {
+    width: 100%;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.47);
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    backdrop-filter: blur(10px);
+    justify-content: center;
+    gap: 6.4rem;
+
+    margin-left: 100vw;
+
+    /* display-none */
+
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+  }
+
+  .nav-links.display-full {
+    margin-left: 0;
+  }
+
+  .nav-close-icon {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+  }
+
+  .nav-links a:link,
+  .nav-links a:visited {
+    font-size: 3rem;
+    font-weight: 400;
+    color: #eee !important;
+  }
+
+  .nav-links li:last-child a:link,
+  .nav-links li:last-child a:visited {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333 !important;
+    padding: 0.8rem 2.4rem;
+  }
+
+  /* .btn-join.nav-link:link,
+  .btn-join.nav-link:visited {
+   
+  } */
+
+  .main-header {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.6)
+      ),
+      url(../img/pexels-darshak-pandya-574313-header-background.jpg);
+    background-position: 100% 50%;
+  }
+
+  .main-header-text-box {
+    width: 80%;
+    transform: translateX(-50%);
+    left: 50%;
+    top: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  /* *********** */
+
+  .section-themes {
+    overflow-x: scroll;
+  }
+
+  .theme-links-container {
+    overflow-x: scroll;
+  }
+  .themes {
+    grid-template-columns: 1fr !important;
+  }
+
+  .card {
+    align-self: start;
+    gap: 3.2rem;
+  }
+
+  .section-features .heading-secondary {
+    margin-top: 2.4rem;
+    margin-bottom: 4.8rem;
+  }
+
+  .features-container {
+    overflow-x: scroll;
+  }
+
+  .features-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card:nth-child(even) .image-box-text {
+    left: 50%;
+    top: 80%;
+    text-shadow: 3px 3px 5px black;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  .card:nth-child(odd) .image-box-text {
+    text-align: center;
+  }
+
+  .section-video {
+    display: none;
+  }
+
+  .video {
+    height: 35rem;
+  }
+
+  .locations {
+    grid-template-columns: 1fr;
+  }
+
+  .location {
+    margin: 0 !important;
+    margin-bottom: 1.2rem !important;
+  }
+
+  .section-locations-header {
+    margin: auto;
+  }
+
+  .locations .see-all:link,
+  .locations .see-all:visited {
+    width: 100%;
+    margin: auto;
+    box-sizing: border-box;
+  }
+
+  .form.grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-submit {
+    justify-self: center;
+  }
+
+  .section-family {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .section-family header {
+    grid-column: 1/-1;
+    grid-row: 1/2;
+    margin-bottom: 2.4rem;
+  }
+
+  .family-image-box:first-child {
+    margin-left: 20%;
+
+    width: 40vw;
+    height: 50vw;
+  }
+
+  .family-image-box:last-child {
+    margin-top: 80%;
+    margin-left: -20%;
+    width: 40vw;
+    height: 50vw;
+  }
+
+  .section-family-time header {
+    flex-direction: column;
+    gap: 3.2rem;
+    margin-bottom: 3.2rem;
+  }
+
+  .section-family-time .header-text {
+    width: 100% !important;
+  }
+
+  .section-family-time .see-all:link,
+  .section-family-time .see-all:visited {
+    align-self: stretch;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .family-time-card-container {
+    width: 360%;
+    gap: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .family-time-card-container-container {
+    width: 100%;
+    overflow-x: scroll;
+  }
+
+  .slider-btn-container {
+    display: none;
+  }
+
+  .family-time-card-container-container {
+    margin-bottom: 1.2rem;
+  }
+
+  .family-time-card {
+    background-color: #f5f1f1d9;
+    flex: 1 !important;
+  }
+
+  .slider-1 {
+    margin-right: calc(-40vw * 7);
+  }
+
+  .slider-2 {
+    margin-left: calc(-40vw * 7);
+  }
+
+  .gallery li {
+    flex: 1 0 40vw;
+    height: 55vw;
+  }
+
+  .section-footer {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-logo {
+    justify-self: center;
+  }
+
+  .download-item {
+    grid-row: 5;
+  }
+
+  .information-item {
+    grid-row: 2;
+  }
+
+  .social-links .footer-item-list {
+    grid-row: 4;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 4.8rem;
+  }
+}
+
+/* ****************************** */
+/* *******(FOR below 544px)******* */
+/* ****************************** */
+
+@media (max-width: 34em) {
+  html {
+    font-size: 58%;
+  }
+
+  body {
+    letter-spacing: 1.2px;
+  }
+
+  .heading-primary {
+    font-size: 4.4rem;
+  }
+
+  .heading-secondary {
+    font-size: 3.6rem;
+  }
+
+  .heading-four {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .heading-ternary {
+    font-size: 2rem;
+    margin: 1.2rem 0;
+  }
+
+  .section-features {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+
+  .section-locations,
+  .section-themes,
+  .section-family {
+    padding-top: 6.4rem;
+    padding-bottom: 6.4rem;
+    padding-left: 1.8rem;
+    padding-right: 1.8rem;
+  }
+
+  .main-header {
+    margin-bottom: 3.2rem;
+  }
+
+  .themes.grid {
+    row-gap: 3.6rem !important;
+  }
+
+  .section-themes-header-text {
+    font-size: 1.8rem;
+  }
+
+  .card .image-box-text {
+    font-size: 2.2rem;
+  }
+
+  .location {
+    margin: 0 !important;
+    margin-bottom: 1.2rem !important;
+    border: none;
+  }
+
+  .location-text-box {
+    padding: 0;
+  }
+
+  .price {
+    margin-top: 0;
+  }
+
+  .price span {
+    display: inline-block;
+    font-size: 1.4rem;
+  }
+
+  .section-form {
+    margin: 6.4rem 0;
+  }
+
+  .form input,
+  .form input::placeholder {
+    font-size: 1.8rem;
+  }
+
+  .form-text-box .heading-ternary {
+    font-size: 2.4rem;
+  }
+
+  .section-family .heading-primary {
+    font-size: 3.6rem;
+    margin-bottom: 2.4rem;
+  }
+
+  .section-family .family-text {
+    margin-bottom: 2.4rem;
+  }
+
+  .section-family-time {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .section-family-time header {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  /* .family-time-text {
+    font-size: 1.8rem;
+  } */
+
+  .insta-logo {
+    font-size: 3.2rem;
+  }
+}
+
+/* FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+SPACING SYSTEM (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+ */
