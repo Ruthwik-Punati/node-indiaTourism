@@ -16,7 +16,7 @@ mongoose.connect(DB).then((err) => {
 })
 
 const server = app.listen(3300, () => {
-  console.log('server started!')
+  console.log(`server started on port ${port}`)
 })
 // process.on('uncaughtException', (err) => {
 //   console.log(err)
