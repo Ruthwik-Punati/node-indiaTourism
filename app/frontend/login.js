@@ -18,6 +18,22 @@ const link = document.querySelector('.link')
 
 const formLogin = document.querySelector('.form-login')
 
+const redirect = function (path) {
+  window.location = path
+}
+
+function loading() {
+  const previousContent = btn?.textContent
+  function startLoading() {
+    btn && (btn.textContent = 'Loading...')
+  }
+  function endLoading() {
+    btn && (btn.textContent = previousContent)
+  }
+
+  return [startLoading, endLoading]
+}
+
 const axiosInstance = axios.create({
   baseURL: '/',
   // timeout: 1000,
@@ -105,20 +121,19 @@ async function callApi({
   errMsg = true,
   succMsg = true,
 }) {
+  const [startLoading, endLoading] = loading()
   try {
+    startLoading()
     const res = await axiosInstance[method](path, payload)
-
+    endLoading()
     succMsg && Alert(res.data.message)
     return res
   } catch (err) {
+    endLoading()
     console.log(err)
 
     errMsg && Alert(err.response.data.message)
   }
-}
-
-function redirect(path) {
-  window.location = path
 }
 
 // NOTES

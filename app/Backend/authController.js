@@ -20,12 +20,6 @@ function sendToken(user, res, message = 'Login successfull!') {
   res.status(200).json({ status: 'success', message, data: { token } })
 }
 
-// module.exports.loginPage = catchAsync((req, res) => {
-//   const login = fs.readFileSync(`../frontend/dist/login.html`, 'utf-8')
-//   res.writeHead(200, 'success', { 'content-type': 'text/html' })
-//   res.end(login)
-// })
-
 module.exports.signUp = catchAsync(async (req, res, next) => {
   const user = await User.create(req.body)
 
@@ -51,25 +45,19 @@ module.exports.login = catchAsync(async (req, res, next) => {
   sendToken(user, res)
 })
 
-// module.exports.indiaTourism = catchAsync(async (req, res, next) => {
-//   const indiaTourism = fs.readFileSync(
-//     `../../India-Tourism-master/index.html`,
-//     'utf-8'
-//   )
-
-//   res.end(indiaTourism)
-// })
-
 module.exports.protect = catchAsync(async (req, res, next) => {
   // const token = req.headers.authorization?.split(' ')?.[1]
 
   const token = req.cookies.JWToken
 
+  console.log(token)
+
   if (!token) {
     next(new AppError('Please login!', 401))
+    return
   }
 
-  const payload = JWT.verify(token, process.env.JWT_SECRET)
+  const payload = await JWT.verify(token, process.env.JWT_SECRET)
 
   const { id, iat } = payload
 
@@ -102,14 +90,14 @@ module.exports.forgotPassword = catchAsync(async (req, res, next) => {
 
   const resetToken = await user.createResetPasswordToken()
 
-  await user.save({ validateBeforeSave: false })
+  await user.save({ validateBeforeSave: false, isNew: false })
 
   const resetLink = `${req.protocol}://${req.get(
     'host'
   )}/resetPasswordPage/${resetToken}`
 
   await sendMail({
-    to: 'ruthwikpunati@gmail.com',
+    to: req.body.email,
     subject: 'Reset Password',
     text: `reset your password with this link ${resetLink}`,
   })
@@ -133,7 +121,7 @@ module.exports.validateResetToken = catchAsync(async (req, res, next) => {
   })
 
   if (!user) {
-    return next(new AppError('Token is invalid or expired!'))
+    return next(new AppError('Token is invalid or expired!'), 400)
   }
 
   req.user = user

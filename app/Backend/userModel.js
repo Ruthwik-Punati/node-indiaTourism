@@ -37,17 +37,12 @@ const userSchema = mongoose.Schema({
   passwordResetToken: String,
 })
 
-userSchema.pre('save', function (next) {
-  if (this.isModified('password') || this.isNew)
-    this.passwordChangedAt = new Date() + 1000
-
-  next()
-})
-
 userSchema.pre('save', async function (next) {
-  this.password = await bcrypt.hash(this.password, 10)
-  this.passwordConfirm = undefined
-
+  if (this.isModified('password') || this.isNew) {
+    this.password = await bcrypt.hash(this.password, 10)
+    this.passwordConfirm = undefined
+    this.passwordChangedAt = new Date() + 1000
+  }
   next()
 })
 
@@ -68,8 +63,6 @@ userSchema.methods.createResetPasswordToken = async function () {
 }
 
 userSchema.methods.isPasswordChangedAfterLogin = function (initiatedAt) {
-  // if (!this.passwordChangedAt) return false
-
   return this.passwordChangedAt / 1000 > initiatedAt
 }
 
