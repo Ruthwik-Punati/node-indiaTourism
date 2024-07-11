@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "rdist": "npx rimraf dist",
+    "build": "npx rimraf dist&&parcel build chat.html"
+  },
+  "dependencies": {
+    "parcel": "^2.12.0",
+    "socket.io-client": "^4.7.5"
+  },
+  "devDependencies": {
+    "buffer": "^6.0.3"
+  }
+}
