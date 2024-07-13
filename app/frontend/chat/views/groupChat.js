@@ -1,5 +1,6 @@
 import View from './view'
 import * as model from '../model'
+import { changeTimeFormat } from '../helper'
 
 class GroupChat extends View {
   _parentEl = document.querySelector('.chat')
@@ -13,14 +14,26 @@ class GroupChat extends View {
            src=${data.profileUrl || 'svgs/person.svg'}
          />
       </div><div class="messages">${data
-        .map((item) => {
+        .map((item, i, arr) => {
           const sender = model.state.selectedGroup.users.find(
             (user) => user._id === item.sender
           )
+
+          const isSenderTheUser = item.sender === model.state.user._id
           return `
-      <p class="msg ${
-        item.sender !== model.state.user._id ? 'msg-left' : 'msg-right'
-      }"><span>${sender.name}</span>${item.message}</p>`
+       
+      <p class="msg ${!isSenderTheUser ? 'msg-left' : 'msg-right'}">
+         ${
+           arr[i - 1]?.sender !== item.sender && !isSenderTheUser
+             ? `<span class="sender-name"> ${sender.name}</span>`
+             : ''
+         }
+      ${item.message}
+       <span class="sent-at"> ${changeTimeFormat(new Date(item.sentAt))}</span>
+      </p>
+      
+  
+      `
         })
         .join(
           ''

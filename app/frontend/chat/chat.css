@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  scroll-behavior: smooth;
 }
 
 /* // <uniquifier>: Use a unique and descriptive class name
@@ -54,6 +53,7 @@ body {
   height: calc(100% - 13rem);
   padding: 0 1rem;
   overflow: scroll;
+  /* scroll-behavior: smooth; */
 }
 
 .contactCard {
@@ -170,6 +170,19 @@ body {
   /* 
   animation: slidein 1s ease-out;
   animation-fill-mode: forwards; */
+}
+
+.sender-name {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.sent-at {
+  font-size: 1.2rem;
+  float: right;
+  margin-top: 1rem;
+  margin-left: 1rem;
 }
 
 .msg-right {
