@@ -1,18 +1,16 @@
-import * as model from '../model'
+import { addEvent, getModLastMsg } from '../helper'
+import View from './view'
 
-class Groups {
-  _parentEl = document.querySelector('.chat')
-  generateMarkUp(groups) {
+class Groups extends View {
+  _generateMarkUp(groups) {
     return ` ${groups
       .map((group) => {
         const lastMsg = group.lastMsg?.message
-        return ` <div class="contactCard groupCard">
-      <img
-        class="dp"
-        src=${group.profileUrl || '"svgs/person.svg"'}
-      />
+        console.log(lastMsg?.substr(0, 10))
+        return ` <div class="groupCard">
+    <div class="letter-dp">${group.name.charAt(0)}</div>
      <div> <h2 class="name">${group.name}</h2>
-     ${lastMsg ? `<p class="last-msg">${lastMsg}</p>` : ''}
+      ${lastMsg ? `<p class="last-msg">${getModLastMsg(lastMsg)}</p>` : ''}
      </div>
       <img class="arrow" src="svgs/arrow.svg" />
     </div>`
@@ -21,18 +19,13 @@ class Groups {
   }
 
   addSelectHandler(handler) {
-    this._parentEl.querySelectorAll('.groupCard').forEach((card) =>
-      card.addEventListener('click', function (e) {
-        const groupName = e.target
-          .closest('.groupCard')
-          .querySelector('.name').textContent
-        console.log(model.state.contacts.groups)
-        model.state.selectedGroup = model.state.contacts.groups.find(
-          (group) => group.name === groupName
-        )
-        handler()
-      })
-    )
+    addEvent('click', '.groupCard', function (e) {
+      const groupCard = e.target.closest('.groupCard')
+
+      const groupName = groupCard.querySelector('.name').textContent
+
+      handler(groupName)
+    })
   }
 }
 

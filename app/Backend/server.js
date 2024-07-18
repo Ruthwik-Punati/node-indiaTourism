@@ -1,11 +1,10 @@
+const dotEnv = require('dotenv')
+dotEnv.config({ path: './config.env' })
 const app = require('./app')
 const ioInit = require('./socket')
-const dotEnv = require('dotenv')
 
 const { setupMaster, setupWorker } = require('@socket.io/sticky')
 const { createAdapter, setupPrimary } = require('@socket.io/cluster-adapter')
-
-dotEnv.config({ path: './config.env' })
 
 const mongoose = require('mongoose')
 

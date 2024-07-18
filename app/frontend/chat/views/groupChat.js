@@ -1,70 +1,32 @@
 import View from './view'
-import * as model from '../model'
-import { changeTimeFormat } from '../helper'
+import model from '../model'
+
+import sendForm from './sendForm'
+import groupMessages from './groupMessages'
+import { addEvent } from '../helper'
 
 class GroupChat extends View {
-  _parentEl = document.querySelector('.chat')
+  _element = () => document.querySelector('.chat')
 
   _generateMarkUp(data) {
-    return ` <div class="contactCard groupCard selected">
-        <img class="arrow" src="svgs/arrow.svg" />
+    const selectedGroup = model.getSelectedGroup()
 
-        <h1 class="name">${model.state.selectedGroup.name}</h1>
+    return `<div class="chat groupChat"> <div class="selected">
+        <img class="arrow back" src="svgs/arrow.svg" />
+
+        <h1 class="name">${selectedGroup.name}</h1>
         <img class="dp" 
            src=${data.profileUrl || 'svgs/person.svg'}
          />
-      </div><div class="messages">${data
-        .map((item, i, arr) => {
-          const sender = model.state.selectedGroup.users.find(
-            (user) => user._id === item.sender
-          )
-
-          const isSenderTheUser = item.sender === model.state.user._id
-          return `
-       
-      <p class="msg ${!isSenderTheUser ? 'msg-left' : 'msg-right'}">
-         ${
-           arr[i - 1]?.sender !== item.sender && !isSenderTheUser
-             ? `<span class="sender-name"> ${sender.name}</span>`
-             : ''
-         }
-      ${item.message}
-       <span class="sent-at"> ${changeTimeFormat(new Date(item.sentAt))}</span>
-      </p>
-      
-  
-      `
-        })
-        .join(
-          ''
-        )}</div><form class="send-form"><input class="input-box send" onblur="this.focus()" autofocus  placeholder="Send message"/><form/>`
+      </div>${groupMessages.render(data)}  ${sendForm.render()} </div>`
   }
 
-  addSendInputHandler(handler) {
-    const input = this._parentEl.querySelector('.send')
+  addSendMessageHandler(handler) {
+    sendForm.addSendInputHandler(function (e) {
+      if (!e.target.closest('.groupChat')) return
 
-    this._disableFormSubmit()
-    input.addEventListener('keydown', function (e) {
-      e.code === 'Enter' && handler(e)
+      handler(e.target.value)
     })
-  }
-
-  _disableFormSubmit() {
-    this._parentEl
-      .querySelector('.send-form')
-      .addEventListener('submit', (e) => {
-        console.log(e.target)
-        e.preventDefault()
-      })
-  }
-  addBackToContactsHandler(handler) {
-    this._parentEl.querySelector('.arrow').addEventListener('click', handler)
-  }
-
-  scrollBottom() {
-    const messages = this._parentEl.querySelector('.messages')
-
-    messages.scrollTop = messages.scrollHeight
   }
 }
 

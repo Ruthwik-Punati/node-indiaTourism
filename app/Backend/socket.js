@@ -6,6 +6,8 @@ const Message = require('./models/chat/messageModel')
 const Group = require('./models/chat/groupModel')
 const GroupMessages = require('./models/chat/groupMessageModel')
 
+const generate = require('./ai/gemini')
+
 const { createRoomId } = require('./helper')
 const UserModel = require('./models/userModel')
 
@@ -61,13 +63,12 @@ const ioInit = function (server) {
     })
 
     socket.on('groupMessage', async (user, group, message) => {
-      let msg = {
+      const msg = await GroupMessages.create({
         group,
         sender: user,
         message,
-      }
+      })
       io.sockets.in(group).emit('groupMessage', msg)
-      msg = await GroupMessages.create(msg)
 
       await Group.findByIdAndUpdate(group, { $set: { lastMsg: msg._id } })
     })
@@ -90,9 +91,21 @@ const ioInit = function (server) {
       socket.emit('messages', messages)
     })
 
-    socket.on('message', async (sender, receiver, message) => {
+    async function handleMessage(sender, receiver, message) {
+      console.log(process.env.GOOGLE_AI_ID)
+      if (!process.env.GOOGLE_AI_ID) {
+        return
+      }
       const msg = await Message.create({ sender, receiver, message })
+
       io.sockets.in(createRoomId(sender, receiver)).emit('message', msg)
+
+      if (receiver === `${process.env.GOOGLE_AI_ID}`) {
+        const returnMsg = await generate(message)
+
+        handleMessage(receiver, sender, returnMsg)
+        return
+      }
       const receiverInWith = await Inbox.findOne({
         $and: [{ user: sender }, { 'with.user': receiver }],
       })
@@ -117,7 +130,9 @@ const ioInit = function (server) {
           { $set: { 'with.$.lastMsg': msg._id } }
         )
       }
-    })
+    }
+
+    socket.on('message', handleMessage)
 
     // when server disconnects from user
     socket.on('disconnect', () => {

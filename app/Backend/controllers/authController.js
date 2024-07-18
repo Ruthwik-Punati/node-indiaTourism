@@ -84,6 +84,7 @@ module.exports.protect = catchAsync(async (req, res, next) => {
 
   if (!token) {
     next(new AppError('Please login!', 401))
+
     return
   }
 

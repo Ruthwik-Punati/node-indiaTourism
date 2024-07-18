@@ -2,135 +2,117 @@ import { io } from 'socket.io-client'
 console.log('web sockets')
 const socket = io()
 
-// const messagesContainer = document.querySelector('.messages-container')
-// const messageInput = document.querySelector('input[name=message]')
-
-// // connection with server
-// socket.on('connect', function () {
-//   console.log('Connected to Server')
-// })
-
-// // message listener from server
-// socket.emit('sendAll')
-// socket.on('sendAll', function (messages) {
-//   messages.forEach((item) => {
-//     const p = document.createElement('p')
-//     const newMessage = document.createTextNode(item.message)
-//     p.appendChild(newMessage)
-//     messagesContainer.append(p)
-//   })
-// })
-
-// socket.on('message', function (message) {
-//   const p = document.createElement('p')
-//   const newMessage = document.createTextNode(message.message)
-//   p.appendChild(newMessage)
-//   messagesContainer.append(p)
-// })
-
-// // add event listener to form
-// document
-//   .getElementById('message-form')
-//   .addEventListener('submit', function (e) {
-//     // prevent the form from submitting
-//     e.preventDefault()
-
-//     // emit message from user side
-//     socket.emit('message', {
-//       message: messageInput.value,
-//     })
-//   })
-
-// // when disconnected from server
-// socket.on('disconnect', function () {
-//   console.log('Disconnected from server')
-// })
-
 import contacts from './views/contacts'
 import chat from './views/chat'
 import * as model from './model'
 import groups from './views/groups'
 import groupChat from './views/groupChat'
+import model from './model'
 
-function contactHandler() {
-  const selectedContact = model.state.selectedContact
+import messages from './views/messages'
+import SearchForm from './views/SearchForm'
+import contactList from './views/contactList'
 
-  socket.emit('messages', model.state.user._id, selectedContact.user._id)
+import onlyContacts from './views/onlyContacts'
+import groupMessages from './views/groupMessages'
+
+model.setUser()
+const user = model.getUser()
+
+function contactHandler(contactName) {
+  model.setSelectedContact(contactName)
+  const selectedContact = model.getSelectedContact()
+
+  socket.emit('messages', user._id, selectedContact.user._id)
 }
 
 function emitContacts() {
-  socket.emit('contacts', model.state.user._id)
+  socket.emit('contacts', user._id)
 }
 
-function groupHandler() {
-  const selectedGroup = model.state.selectedGroup
-  socket.emit('groupMessages', selectedGroup._id)
+function groupHandler(groupName) {
+  model.setSelectedGroup(groupName)
+
+  socket.emit('groupMessages', model.getSelectedGroup()._id)
+}
+
+function handlerSearch(searchText) {
+  model.filterContacts(searchText)
+
+  contactList.render(model.getFilteredContacts())
+}
+
+function renderContacts(data) {
+  contacts.render(data)
 }
 
 function renderChat() {
-  chat.render(model.state.messages)
-  chat.addSendInputHandler(messageHandler)
-  chat.addBackToContactsHandler(emitContacts)
+  chat.render(model.getMessages())
+
   chat.scrollBottom()
 }
 function renderGroupChat() {
-  groupChat.render(model.state.groupMessages)
-  groupChat.addSendInputHandler(groupMessageHandler)
-  groupChat.addBackToContactsHandler(emitContacts)
+  groupChat.render(model.getGroupMessages())
+
   groupChat.scrollBottom()
 }
 
-function messageHandler(e) {
-  socket.emit(
-    'message',
-    model.state.user._id,
-    model.state.selectedContact.user._id,
-    e.target.value
-  )
+function messageHandler(message) {
+  socket.emit('message', user._id, model.getSelectedContact().user._id, message)
 }
-function groupMessageHandler(e) {
+function groupMessageHandler(groupMessage) {
   socket.emit(
     'groupMessage',
-    model.state.user._id,
-    model.state.selectedGroup._id,
-    e.target.value
+    user._id,
+    model.getSelectedGroup()._id,
+    groupMessage
   )
 }
 
+function addEvents() {
+  onlyContacts.addSelectHandler(contactHandler)
+  groups.addSelectHandler(groupHandler)
+  chat.addSendMessageHandler(messageHandler)
+  groupChat.addSendMessageHandler(groupMessageHandler)
+  chat.addBackToContactsHandler(emitContacts)
+  SearchForm.addHandlerSearch(handlerSearch)
+}
 function init() {
-  model.state.user = JSON.parse(localStorage.getItem('user'))
-
   socket.on('contacts', (data) => {
-    model.state.contacts = data
+    model.setContacts(data)
 
-    contacts.render(model.state.contacts)
-
-    contacts.addSelectHandler(contactHandler)
-    groups.addSelectHandler(groupHandler)
+    renderContacts(model.getContacts())
   })
 
   emitContacts()
 
   socket.on('message', (message) => {
-    model.state.messages.push(message)
+    messages.addNewMessage({ msg: message })
+    model.addMessage(message)
 
-    renderChat()
+    messages.scrollBottom()
   })
 
   socket.on('messages', (messages) => {
-    model.state.messages = messages
+    console.log(messages)
+    model.setMessages(messages)
     renderChat()
   })
 
-  socket.on('groupMessages', (messages) => {
-    model.state.groupMessages = messages
+  socket.on('groupMessages', (groupMessages) => {
+    console.log(groupMessages)
+    model.setGroupMessages(groupMessages)
     renderGroupChat()
   })
 
   socket.on('groupMessage', (groupMessage) => {
-    model.state.groupMessages.push(groupMessage)
-    renderGroupChat()
+    const prevMsg = model.getGroupMessages().at(-1)
+    groupMessages.addNewMessage({ msg: groupMessage, prevMsg })
+    model.addGroupMessage(groupMessage)
+    groupMessages.scrollBottom()
   })
+
+  addEvents()
 }
 
 init()
