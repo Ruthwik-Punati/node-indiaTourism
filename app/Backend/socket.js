@@ -47,7 +47,17 @@ const ioInit = function (server) {
         return { user: el }
       })
 
-      contactsInInbox.with = [...contactsInInbox.with, ...usersNotInContacts]
+      contactsInInbox.with = [
+        ...contactsInInbox.with,
+        ...usersNotInContacts,
+        // below ones need to be removed
+        ...contactsInInbox.with,
+        ...contactsInInbox.with,
+        ...contactsInInbox.with,
+        ...contactsInInbox.with,
+        ...contactsInInbox.with,
+        ...contactsInInbox.with,
+      ]
 
       const contacts = { ...contactsInInbox._doc, groups }
 
@@ -102,9 +112,10 @@ const ioInit = function (server) {
 
       if (receiver === `${process.env.GOOGLE_AI_ID}`) {
         const returnMsg = await generate(message)
-
-        handleMessage(receiver, sender, returnMsg)
-        return
+        if (returnMsg) {
+          handleMessage(receiver, sender, returnMsg)
+          return
+        }
       }
       const receiverInWith = await Inbox.findOne({
         $and: [{ user: sender }, { 'with.user': receiver }],

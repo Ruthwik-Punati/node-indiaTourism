@@ -116,8 +116,9 @@ p {
   text-align: center;
 }
 
-@media screen and (max-width: 40rem) {
-  html {
-    font-size: 125%;
+@media screen and (max-width: 50em) {
+  .form-login {
+    width: 80%;
+    margin-top: 2rem;
   }
 }

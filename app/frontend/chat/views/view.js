@@ -27,7 +27,9 @@ export default class View {
   scrollBottom() {
     const messages = document.querySelector('.messages')
 
-    messages.scrollTop = messages.scrollHeight
+    // messages.scrollTop = messages.scrollHeight
+    console.log(messages.lastChild)
+    messages.lastElementChild.scrollIntoView()
   }
 
   update(data) {

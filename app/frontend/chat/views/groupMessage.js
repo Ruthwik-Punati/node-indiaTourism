@@ -9,11 +9,14 @@ class GroupMessage extends View {
     const user = model.getUser()
 
     const sender = selectedGroup.users.find((user) => user._id === item.sender)
+    const sameSenderAsPrev = prevItem?.sender === item.sender
 
     const isSenderTheUser = item.sender === user._id
-    return `<p class="msg ${!isSenderTheUser ? 'msg-left' : 'msg-right'}">
+    return `<p class="msg ${!isSenderTheUser ? 'msg-left' : 'msg-right'} ${
+      sameSenderAsPrev ? 'mt-sm' : 'mt-md'
+    }">
         ${
-          prevItem?.sender !== item.sender && !isSenderTheUser
+          !sameSenderAsPrev && !isSenderTheUser
             ? `<span class="sender-name"> ${sender.name}</span>`
             : ''
         }

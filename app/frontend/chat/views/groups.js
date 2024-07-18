@@ -1,18 +1,21 @@
 import { addEvent, getModLastMsg } from '../helper'
 import View from './view'
 
+import letterDp from './letterDp'
+
 class Groups extends View {
   _generateMarkUp(groups) {
     return ` ${groups
       .map((group) => {
         const lastMsg = group.lastMsg?.message
-        console.log(lastMsg?.substr(0, 10))
-        return ` <div class="groupCard">
-    <div class="letter-dp">${group.name.charAt(0)}</div>
-     <div> <h2 class="name">${group.name}</h2>
+        const name = group.name
+
+        return ` <div class="groupCard cursor-p">
+   ${letterDp.render(name)}
+     <div> <h2 class="name">${name}</h2>
       ${lastMsg ? `<p class="last-msg">${getModLastMsg(lastMsg)}</p>` : ''}
      </div>
-      <img class="arrow" src="svgs/arrow.svg" />
+
     </div>`
       })
       .join('')}`

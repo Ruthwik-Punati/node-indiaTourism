@@ -87,20 +87,19 @@ function init() {
   emitContacts()
 
   socket.on('message', (message) => {
-    messages.addNewMessage({ msg: message })
+    const prevMsg = model.getMessages().at(-1)
+    messages.addNewMessage({ msg: message, prevMsg })
     model.addMessage(message)
 
     messages.scrollBottom()
   })
 
   socket.on('messages', (messages) => {
-    console.log(messages)
     model.setMessages(messages)
     renderChat()
   })
 
   socket.on('groupMessages', (groupMessages) => {
-    console.log(groupMessages)
     model.setGroupMessages(groupMessages)
     renderGroupChat()
   })
