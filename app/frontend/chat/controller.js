@@ -10,7 +10,7 @@ import groupChat from './views/groupChat'
 import model from './model'
 
 import messages from './views/messages'
-import SearchForm from './views/SearchForm'
+import searchForm from './views/searchForm'
 import contactList from './views/contactList'
 
 import onlyContacts from './views/onlyContacts'
@@ -75,7 +75,7 @@ function addEvents() {
   chat.addSendMessageHandler(messageHandler)
   groupChat.addSendMessageHandler(groupMessageHandler)
   chat.addBackToContactsHandler(emitContacts)
-  SearchForm.addHandlerSearch(handlerSearch)
+  searchForm.addHandlerSearch(handlerSearch)
 }
 function init() {
   socket.on('contacts', (data) => {
