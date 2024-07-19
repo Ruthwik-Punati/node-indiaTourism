@@ -9,7 +9,7 @@
 125C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\@parcel\utils\test\input\sourcemap\referenced-min.js133624187014330588 0
 126C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\@swc\helpers\_\_interop_require_wildcard\package.json133624187024167732 0
 102C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\regenerator-runtime\README.md133624187001024907 0
-64C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\dist133658010667247964 1
+64C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\dist133658246256368309 1
 104C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\caniuse-lite\data\regions\AX.js133624187012968529 0
 126C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\@parcel\optimizer-htmlnano\node_modules\css-tree\dist133624187011251313 1
 102C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\@parcel\workers\lib\Worker.js133624187012203955 0
@@ -64,7 +64,7 @@
 105C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\css-select\lib\attributes.js.map133624187010161335 0
 91C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\clone\package.json133624186996778630 0
 108C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\caniuse-lite\data\regions\alt-as.js133624187006396365 0
-73C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\controller.js133657746575297626 0
+73C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\controller.js133658239132696533 0
 121C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\socket.io-client\build\cjs\browser-entrypoint.js133624161011280698 0
 128C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\engine.io-client\build\cjs\transports\xmlhttprequest.js133624161011882806 0
 107C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\svgo\plugins\removeRasterImages.js133624187015933388 0
@@ -2226,7 +2226,7 @@
 110C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\css-tree\cjs\syntax\atrule\import.cjs133624187013640114 0
 119C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\.bin\node-gyp-build-optional-packages-test.ps1133624187043393571 0
 117C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\lmdb\node_modules\node-addon-api\except.gypi133624187000077057 0
-84C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\dist\search.452f5fbe.svg133658010666932674 0
+84C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\dist\search.452f5fbe.svg133658246252782370 0
 116C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\lmdb\node_modules\node-addon-api\LICENSE.md133624187006718823 0
 129C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\csso\node_modules\css-tree\lib\generator\token-before.js133624187023686872 0
 93C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\htmlnano\LICENSE.txt133624187017866360 0
@@ -2725,7 +2725,6 @@
 101C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\@parcel\cache\src\FSCache.js133624187001297169 0
 128C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\htmlnano\docs\versioned_docs\version-2.0.0\020-usage.md133624187013811418 0
 102C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\escape-string-regexp\index.js133624186997763067 0
-81C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\dist\chat.66318083.js133658010667087892 0
 107C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\@parcel\core\src\Transformation.js133624187021639410 0
 130C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\htmlnano\docs\versioned_docs\version-2.0.0\040-presets.md133624187014261352 0
 135C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\htmlnano\docs\versioned_docs\version-1.1.1\010-introduction.md133624187013386262 0
@@ -4284,7 +4283,7 @@
 96C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\@parcel\workers\src\web133624187012029270 1
 104C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\caniuse-lite\data\regions\LC.js133624187030208807 0
 104C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\caniuse-lite\data\regions\LI.js133624187030248792 0
-82C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\dist\chat.db20c521.css133658010667087892 0
+82C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\dist\chat.db20c521.css133658246256288297 0
 141C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\@parcel\optimizer-htmlnano\node_modules\css-tree\lib\lexer\search.js133624187017912208 0
 104C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\caniuse-lite\data\regions\LK.js133624187030508462 0
 104C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\caniuse-lite\data\regions\LR.js133624187030566865 0
@@ -5824,6 +5823,7 @@
 136C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\@parcel\optimizer-htmlnano\node_modules\svgo\plugins\plugins.js133624187011371652 0
 155C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\@parcel\optimizer-htmlnano\node_modules\svgo\plugins\removeAttributesBySelector.js133624187011933103 0
 143C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\@parcel\optimizer-htmlnano\node_modules\svgo\plugins\removeComments.js133624187012129190 0
+85C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\dist\chat.d65f79c8.js.map133658246256358333 0
 139C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\@parcel\optimizer-htmlnano\node_modules\svgo\plugins\removeDesc.js133624187012266198 0
 145C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\@parcel\optimizer-htmlnano\node_modules\svgo\plugins\removeDimensions.js133624187012387232 0
 150C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\@parcel\optimizer-htmlnano\node_modules\svgo\plugins\removeEmptyContainers.js133624187013115250 0
@@ -6225,7 +6225,6 @@
 127C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\@babel\highlight\node_modules\supports-color\readme.md133624187000905594 0
 120C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\@babel\highlight\node_modules\has-flag\index.js133624186998015556 0
 124C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\@babel\highlight\node_modules\has-flag\package.json133624186997145392 0
-85C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\dist\chat.66318083.js.map133658010667227974 0
 122C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\@babel\highlight\node_modules\color-name\index.js133624187000918307 0
 122C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\@babel\highlight\node_modules\chalk\index.js.flow133624186998702068 0
 121C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\@babel\highlight\node_modules\color-name\LICENSE133624187000223709 0
@@ -6266,7 +6265,8 @@
 84C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\.bin\semver133624187043393571 0
 82C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\.bin\svgo133624187043393571 0
 86C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\node_modules\.bin\svgo.ps1133624187043393571 0
-86C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\dist\chat.db20c521.css.map133658010667227974 0
-74C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\dist\chat.html133658010667002118 0
+81C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\dist\chat.d65f79c8.js133658246256288297 0
+86C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\dist\chat.db20c521.css.map133658246256308314 0
+74C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\dist\chat.html133658246256278318 0
 71C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\assets\svgs133643846213924438 1
 81C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\chat\assets\svgs\arrow.svg133657889205477744 0
