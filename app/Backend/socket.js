@@ -47,17 +47,7 @@ const ioInit = function (server) {
         return { user: el }
       })
 
-      contactsInInbox.with = [
-        ...contactsInInbox.with,
-        ...usersNotInContacts,
-        // below ones need to be removed
-        ...contactsInInbox.with,
-        ...contactsInInbox.with,
-        ...contactsInInbox.with,
-        ...contactsInInbox.with,
-        ...contactsInInbox.with,
-        ...contactsInInbox.with,
-      ]
+      contactsInInbox.with = [...contactsInInbox.with, ...usersNotInContacts]
 
       const contacts = { ...contactsInInbox._doc, groups }
 

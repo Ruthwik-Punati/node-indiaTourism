@@ -145,6 +145,9 @@ body {
   border: none;
   border-radius: 10rem;
   outline: none;
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
 }
 
 .send-form {
