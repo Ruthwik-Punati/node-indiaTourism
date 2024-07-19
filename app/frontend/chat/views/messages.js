@@ -19,6 +19,9 @@ class Messages extends View {
       </div>`
   }
   addNewMessage({ msg, prevMsg }) {
+    if (!prevMsg) {
+      this.removeStartConversation()
+    }
     const newMessage = message.render({ item: msg, prevItem: prevMsg })
     this._element().insertAdjacentHTML('beforeend', newMessage)
   }

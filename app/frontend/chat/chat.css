@@ -65,6 +65,7 @@ body {
 .messages {
   display: flex;
   flex-direction: column;
+  margin-top: 7rem;
   height: calc(100% - 13rem);
   padding: 0 1rem;
   overflow: scroll;
@@ -84,10 +85,10 @@ body {
 }
 
 .selected {
-  position: sticky;
+  position: fixed;
+  width: 41.2rem;
   top: 0;
   padding: 1rem;
-  /* margin: 0 1.5rem; */
 }
 
 .contactCard .name {
@@ -148,6 +149,10 @@ body {
   font-size: inherit;
   font-family: inherit;
   color: inherit;
+}
+
+.input-box::placeholder {
+  color: #999999;
 }
 
 .send-form {
@@ -284,5 +289,13 @@ body {
     width: unset;
     height: 100vh;
     max-height: unset;
+  }
+
+  .send-form {
+    width: 100%;
+  }
+
+  .selected {
+    width: 100%;
   }
 }

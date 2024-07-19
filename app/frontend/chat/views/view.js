@@ -32,6 +32,10 @@ export default class View {
     messages.lastElementChild.scrollIntoView()
   }
 
+  removeStartConversation() {
+    this.element().querySelector('.start-conversation').remove()
+  }
+
   update(data) {
     if (!data) return
     const parentEl = this._element()

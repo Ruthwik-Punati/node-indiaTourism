@@ -23,6 +23,9 @@ class GroupMessages extends View {
   }
 
   addNewMessage({ msg, prevMsg }) {
+    if (!prevMsg) {
+      this.removeStartConversation()
+    }
     const newMessage = groupMessage.render({ item: msg, prevItem: prevMsg })
     this._element().insertAdjacentHTML('beforeend', newMessage)
   }
