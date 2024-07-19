@@ -92,6 +92,7 @@ const ioInit = function (server) {
     })
 
     async function handleMessage(sender, receiver, message) {
+      console.log(sender, receiver, message)
       console.log(process.env.GOOGLE_AI_ID)
       if (!process.env.GOOGLE_AI_ID) {
         return
