@@ -18,6 +18,7 @@ export function changeTimeFormat(date) {
 export function addEvent(eventName, className, handler) {
   document.addEventListener(eventName, function (e) {
     if (e.target.closest(className)) {
+      console.log(className, e)
       handler(e)
     }
   })

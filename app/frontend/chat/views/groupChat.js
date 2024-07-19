@@ -32,6 +32,14 @@ class GroupChat extends View {
       e.target.value = ''
     })
   }
+
+  render(data) {
+    try {
+      return super.render(data)
+    } finally {
+      sendForm.focus()
+    }
+  }
 }
 
 export default new GroupChat()

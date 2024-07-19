@@ -28,12 +28,18 @@ export default class View {
     const messages = document.querySelector('.messages')
 
     // messages.scrollTop = messages.scrollHeight
-    console.log(messages.lastChild)
+
     messages.lastElementChild.scrollIntoView()
   }
+  focus() {
+    this._element().querySelector('.input-box').focus()
+  }
 
+  blur() {
+    this._element()?.querySelector('.input-box')?.blur()
+  }
   removeStartConversation() {
-    this.element().querySelector('.start-conversation').remove()
+    this.element()?.querySelector('.start-conversation')?.remove()
   }
 
   update(data) {

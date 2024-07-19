@@ -2,6 +2,8 @@ import View from './view'
 
 import contactList from './contactList'
 import SearchForm from './searchForm'
+import searchForm from './searchForm'
+import sendForm from './sendForm'
 
 class Contacts extends View {
   _element = () => document.querySelector('.chat')
@@ -11,6 +13,14 @@ class Contacts extends View {
        ${SearchForm.render()}
   ${contactList.render(data)}</div>
 `
+  }
+
+  render(data) {
+    try {
+      return super.render(data)
+    } finally {
+      searchForm.focus()
+    }
   }
 }
 

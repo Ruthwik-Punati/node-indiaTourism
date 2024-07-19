@@ -113,24 +113,27 @@ const ioInit = function (server) {
       })
 
       if (!receiverInWith) {
-        await Inbox.updateOne(
-          { user: sender },
-          { $push: { with: { user: receiver, lastMsg: msg._id } } }
-        )
-
-        await Inbox.updateOne(
-          { user: receiver },
-          { $push: { with: { user: sender, lastMsg: msg._id } } }
-        )
+        await Promise.all([
+          await Inbox.updateOne(
+            { user: sender },
+            { $push: { with: { user: receiver, lastMsg: msg._id } } }
+          ),
+          await Inbox.updateOne(
+            { user: receiver },
+            { $push: { with: { user: sender, lastMsg: msg._id } } }
+          ),
+        ])
       } else {
-        await Inbox.updateMany(
-          {
-            $or: [{ user: sender }, { user: receiver }],
-
-            $or: [{ 'with.user': sender }, { 'with.user': receiver }],
-          },
-          { $set: { 'with.$.lastMsg': msg._id } }
-        )
+        await Promise.allSettled([
+          await Inbox.updateOne(
+            { user: sender, 'with.user': receiver },
+            { $set: { 'with.$.lastMsg': msg._id } }
+          ),
+          await Inbox.updateOne(
+            { user: receiver, 'with.user': sender },
+            { $set: { 'with.$.lastMsg': msg._id } }
+          ),
+        ])
       }
     }
 

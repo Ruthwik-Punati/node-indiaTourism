@@ -3,6 +3,7 @@ import Model from '../model'
 import sendForm from './sendForm'
 import messages from './messages'
 import letterDp from './letterDp'
+import searchForm from './searchForm'
 
 class Chat extends View {
   _element = () => document.querySelector('.chat')
@@ -17,6 +18,14 @@ class Chat extends View {
       </div>
         ${messages.render(data)}
         ${sendForm.render()} </div>`
+  }
+
+  render(data) {
+    try {
+      return super.render(data)
+    } finally {
+      sendForm.focus()
+    }
   }
 
   addSendMessageHandler(handler) {
