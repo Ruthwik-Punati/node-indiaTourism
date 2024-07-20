@@ -10,6 +10,7 @@ const generate = require('./ai/gemini')
 
 const { createRoomId } = require('./helper')
 const UserModel = require('./models/userModel')
+const generateChat = require('./ai/geminiChat')
 
 const ioInit = function (server) {
   let io = socketIO(server)
@@ -102,11 +103,15 @@ const ioInit = function (server) {
       io.sockets.in(createRoomId(sender, receiver)).emit('message', msg)
 
       if (receiver === `${process.env.GOOGLE_AI_ID}`) {
-        const returnMsg = await generate(message)
-        if (returnMsg) {
-          handleMessage(receiver, sender, returnMsg)
-          return
-        }
+        // const returnMsg = await generateChat(message)
+        // if (returnMsg) {
+        //   handleMessage(receiver, sender, returnMsg)
+        //   return
+        // }
+
+        generateChat(message, async function (message) {
+          await handleMessage(receiver, sender, message)
+        })
       }
       const receiverInWith = await Inbox.findOne({
         $and: [{ user: sender }, { 'with.user': receiver }],

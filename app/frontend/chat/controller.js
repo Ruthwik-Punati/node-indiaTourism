@@ -15,7 +15,12 @@ import contactList from './views/contactList'
 
 import onlyContacts from './views/onlyContacts'
 import groupMessages from './views/groupMessages'
+import { addEvent } from './helper'
 
+addEvent('dblclick', '*', function (e) {
+  e.stopProgagation()
+  console.log('do nothing!')
+})
 model.setUser()
 const user = model.getUser()
 

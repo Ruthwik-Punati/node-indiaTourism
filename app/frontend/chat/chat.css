@@ -212,7 +212,7 @@ body {
 } */
 
 .msg {
-  border-radius: 1.8rem;
+  border-radius: 1.8rem !important;
   width: auto;
   margin: 0 1rem;
   padding: 0.8rem 1.2rem;
