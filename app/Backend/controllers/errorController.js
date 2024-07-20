@@ -1,6 +1,6 @@
 const globalErrorHandler = (err, req, res, next) => {
   console.log(err)
-  if (err.statusCode === 401) {
+  if (err.statusCode === 401 || err.message === 'jwt expired') {
     res.end('<script>window.location="/login.html"</script>')
     return
   }

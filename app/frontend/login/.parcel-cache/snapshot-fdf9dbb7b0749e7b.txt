@@ -1,7 +1,7 @@
 6096
 123C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\lmdb\dependencies\lmdb\libraries\liblmdb\Doxyfile133612876403713789 0
 134C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@parcel\optimizer-svgo\node_modules\css-select\lib\sort.d.ts133612876413884998 0
-65C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist133658010738832798 1
+65C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist133659549379716798 1
 157C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@parcel\optimizer-svgo\node_modules\css-tree\lib\tokenizer\char-code-definitions.js133612876407962571 0
 105C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\caniuse-lite\data\regions\IL.js133612876442377491 0
 71C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\.gitignore133611960800685092 0
@@ -55,7 +55,7 @@
 96C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@parcel\optimizer-svgo133612876397113890 1
 97C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\node-releases\README.md133612876400638648 0
 117C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\update-browserslist-db\check-npm-version.js133612876393780113 0
-70C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\login.css133657995707072832 0
+70C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\login.css133659475848785583 0
 123C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\lmdb\dependencies\lmdb\libraries\liblmdb\crypto.c133612876413183992 0
 105C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\caniuse-lite\data\regions\BG.js133612876419273485 0
 103C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\csso\lib\replace\Dimension.js133612876420999237 0
@@ -1539,6 +1539,7 @@
 146C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@parcel\optimizer-svgo\node_modules\css-tree\lib\syntax\scope\default.js133612876414752318 0
 96C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\react-refresh\babel.js133612876393812259 0
 129C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\react-refresh\cjs\react-refresh-babel.production.min.js133612876397468307 0
+84C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\login.1b6295e9.css133659549347436420 0
 131C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\react-refresh\cjs\react-refresh-runtime.production.min.js133612876401266700 0
 106C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\react-error-overlay\package.json133612876402772624 0
 98C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\proxy-from-env\.eslintrc133612876393030223 0
@@ -2224,6 +2225,7 @@
 91C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\lightningcss\node133612876409847606 1
 90C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\cosmiconfig\dist133612876416672692 1
 135C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\csso\node_modules\css-tree\cjs\syntax\function\expression.cjs133612876414219074 0
+88C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\login.1b6295e9.css.map133659549347574974 0
 103C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\htmlnano\lib\presets\safe.mjs133612876424918451 0
 91C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\asynckit\bench.js133612876395890448 0
 114C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\csso\cjs\replace\property\background.cjs133612876407642714 0
@@ -2672,7 +2674,7 @@
 95C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\domutils\package.json133612876404422187 0
 105C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\caniuse-lite\data\regions\CK.js133612876424781665 0
 93C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\ansi-styles\license133612876393145759 0
-84C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\signup.17599b37.js133658010727683274 0
+84C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\signup.17599b37.js133659549363860424 0
 92C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\domutils\readme.md133612876409306143 0
 95C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\domutils\lib\feeds.js133612876394079447 0
 152C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@parcel\optimizer-svgo\node_modules\css-select\lib\pseudo-selectors\filters.js133612876400449138 0
@@ -3030,7 +3032,6 @@
 101C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@swc\helpers\cjs\_using.cjs133612876423246976 0
 111C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\csso\lib\restructure\prepare\index.js133612876422384598 0
 120C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\csso\node_modules\css-tree\cjs\utils\ident.cjs133612876415884538 0
-88C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\login.5acf142c.css.map133658010718016060 0
 90C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\csso\lib\replace133612876424511687 1
 120C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\csso\node_modules\css-tree\cjs\utils\index.cjs133612876419524373 0
 130C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@parcel\optimizer-htmlnano\node_modules\csso\lib\replace133612876416275645 1
@@ -3169,7 +3170,7 @@
 110C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\css-tree\cjs\syntax\config\lexer.cjs133612876422155109 0
 114C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@swc\helpers\_\_class_private_method_get133612876436490438 1
 95C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\csso\lib\clean\Raw.js133612876422853894 0
-88C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\signup.17599b37.js.map133658010727778406 0
+88C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\signup.17599b37.js.map133659549363990441 0
 104C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\csso\lib\clean\TypeSelector.js133612876423279820 0
 118C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@swc\helpers\_\_read_only_error\package.json133612876438408135 0
 114C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\css-select\node_modules\entities\LICENSE133612876393269296 0
@@ -3616,6 +3617,7 @@
 160C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@parcel\core\test\fixtures\plugins\node_modules\parcel-transformer-no-engines\index.js133612876422772659 0
 117C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\caniuse-lite\data\features\queryselector.js133612876446721105 0
 123C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\css-select\node_modules\domhandler\lib\index.d.ts133612876408080888 0
+89C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\signup.ef1632ce.css.map133659549363980422 0
 124C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@parcel\optimizer-svgo\node_modules\csso\lib\clean133612876416362064 1
 119C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@swc\helpers\esm\_class_private_method_get.js133612876426353627 0
 127C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\css-select\node_modules\domhandler\lib\index.d.ts.map133612876404564322 0
@@ -3859,6 +3861,7 @@
 105C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\caniuse-lite\data\regions\AG.js133612876405990162 0
 105C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\caniuse-lite\data\regions\AI.js133612876408020644 0
 109C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\caniuse-lite\data\regions\alt-af.js133612876408947506 0
+88C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\reset.57fcfe05.css.map133659549379692925 0
 109C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\caniuse-lite\data\regions\alt-as.js133612876409773442 0
 109C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\caniuse-lite\data\regions\alt-na.js133612876410442678 0
 109C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\caniuse-lite\data\regions\alt-oc.js133612876410694181 0
@@ -4205,7 +4208,6 @@
 118C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\caniuse-lite\data\features\css-snappoints.js133612876436965018 0
 113C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\caniuse-lite\data\features\css3-attr.js133612876437578899 0
 115C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\caniuse-lite\data\features\css-subgrid.js133612876436994904 0
-89C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\signup.551dae8e.css.map133658010727768400 0
 106C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\axios\lib\platform\node\index.js133612876416240848 0
 113C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\caniuse-lite\data\features\css-table.js133612876437031140 0
 110C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@parcel\bundler-default\package.json133612876400638648 0
@@ -4486,7 +4488,7 @@
 119C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\caniuse-lite\data\features\x-frame-options.js133612876451502100 0
 109C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\caniuse-lite\data\features\xhtml.js133612876451531994 0
 104C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@swc\helpers\cjs\_identity.cjs133612876415740665 0
-77C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\signup.html133658010727683274 0
+77C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\signup.html133659549363837763 0
 113C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\caniuse-lite\data\features\xhtmlsmil.js133612876451541962 0
 108C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\caniuse-lite\data\features\zstd.js133612876451597962 0
 130C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@babel\highlight\node_modules\color-convert\package.json133612876393291760 0
@@ -4729,7 +4731,6 @@
 122C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@swc\helpers\_\_array_without_holes\package.json133612876433410971 0
 107C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@swc\helpers\_\index\package.json133612876439523395 0
 100C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@swc\helpers\src\index.mjs133612876441683757 0
-85C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\signup.551dae8e.css133658010727683274 0
 133C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@parcel\optimizer-svgo\node_modules\csso\lib\replace\Url.js133612876415740665 0
 122C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@swc\helpers\src\_apply_decorated_descriptor.mjs133612876439573259 0
 113C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@swc\helpers\src\_apply_decs_2203_r.mjs133612876439573259 0
@@ -5347,7 +5348,7 @@
 125C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@parcel\package-manager\src\MockPackageInstaller.js133612876411058838 0
 106C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@mischnic\json-sourcemap\LICENSE133612876393243311 0
 123C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@parcel\package-manager\src\NodePackageManager.js133612876411243748 0
-87C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\login.a79c6302.js.map133658010718066060 0
+87C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\login.a79c6302.js.map133659549347574974 0
 108C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@parcel\package-manager\src\Npm.js133612876411772093 0
 109C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@parcel\package-manager\src\Pnpm.js133612876412074794 0
 123C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@parcel\package-manager\src\promiseFromProcess.js133612876412546042 0
@@ -5858,7 +5859,7 @@
 96C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@parcel\diagnostic\src133612876395318343 1
 97C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@parcel\diagnostic\test133612876400096569 1
 124C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@parcel\diagnostic\test\JSONCodeHighlights.test.js133612876397869393 0
-76C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\login.html133658010717935992 0
+76C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\login.html133659549347436420 0
 114C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@parcel\diagnostic\test\markdown.test.js133612876400265607 0
 110C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@parcel\diagnostic\src\diagnostic.js133612876395689517 0
 110C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\@parcel\diagnostic\lib\diagnostic.js133612876394211519 0
@@ -6087,11 +6088,10 @@
 87C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\.bin\svgo.cmd133612876455363075 0
 87C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\.bin\svgo.ps1133612876455363075 0
 105C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\node_modules\.bin\update-browserslist-db.cmd133612876455363075 0
-84C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\login.5acf142c.css133658010717852092 0
-83C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\login.a79c6302.js133658010717976164 0
-83C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\logo.46fe65c8.png133658010717789865 0
-83C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\reset.6867fdab.js133658010738748421 0
-87C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\reset.6867fdab.js.map133658010738822831 0
-84C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\reset.e6098d5b.css133658010738738426 0
-88C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\reset.e6098d5b.css.map133658010738822831 0
-76C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\reset.html133658010738738426 0
+83C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\login.a79c6302.js133659549347436420 0
+83C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\logo.46fe65c8.png133659549347376400 0
+84C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\reset.57fcfe05.css133659549379562103 0
+83C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\reset.6867fdab.js133659549379572100 0
+87C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\reset.6867fdab.js.map133659549379692925 0
+76C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\reset.html133659549379562103 0
+85C:\Users\Rithwik Punati\Desktop\app_stack\app\frontend\login\dist\signup.ef1632ce.css133659549363850330 0

@@ -1,5 +1,6 @@
 import View from './view'
 import message from './message'
+import model from '../model'
 
 class Messages extends View {
   _element = () => document.querySelector('.messages')
@@ -13,7 +14,7 @@ class Messages extends View {
         ${data
           .map(
             (item, i, arr) => `
-    ${message.render({ item, prevItem: arr[i - 1] })}`
+    ${message.render({ item, prevItem: arr[i - 1], nextItem: arr[i + 1] })}`
           )
           .join('')}
       </div>`
@@ -22,6 +23,16 @@ class Messages extends View {
     if (!prevMsg) {
       this.removeStartConversation()
     }
+
+    const user = model.getUser()
+    const isSenderTheUser = msg.sender === user._id
+    const sameSenderAsPrev = prevMsg?.sender === msg.sender
+
+    sameSenderAsPrev &&
+      this._element().lastElementChild.classList.remove(
+        isSenderTheUser ? 'bbrr-0' : 'bblr-0'
+      )
+
     const newMessage = message.render({ item: msg, prevItem: prevMsg })
     this._element().insertAdjacentHTML('beforeend', newMessage)
   }

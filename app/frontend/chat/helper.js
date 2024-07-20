@@ -25,7 +25,7 @@ export function addEvent(eventName, className, handler) {
 }
 
 export function getModLastMsg(lastMsg) {
-  return `${lastMsg.substr(0, 30) + (lastMsg.length > 30 ? '...' : '')}`
+  return `${lastMsg.substr(0, 45) + (lastMsg.length > 45 ? '...' : '')}`
 }
 
 export function stringToHslColor(str, s = '50', l = '80', a = '0.8') {

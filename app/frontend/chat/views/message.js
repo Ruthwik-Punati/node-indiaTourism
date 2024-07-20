@@ -3,14 +3,21 @@ import model from '../model'
 import View from './view'
 
 class Message extends View {
-  _generateMarkUp({ item, prevItem }) {
+  _generateMarkUp({ item, prevItem, nextItem }) {
     const user = model.getUser()
 
+    const isSenderTheUser = item.sender === user._id
     const sameSenderAsPrev = prevItem?.sender === item.sender
+    const sameSenderAsNext = nextItem?.sender === item.sender
     return `
       <p class="msg ${item.sender !== user._id ? 'msg-left' : 'msg-right'} ${
       sameSenderAsPrev ? 'mt-sm' : 'mt-md'
-    }">${item.message}
+    }    
+     ${
+       (!sameSenderAsNext || !nextItem) &&
+       (!isSenderTheUser ? 'bblr-0' : 'bbrr-0')
+     }
+    ">${item.message}
              <span class="sent-at"> ${changeTimeFormat(
                new Date(item.sentAt)
              )}</span>  

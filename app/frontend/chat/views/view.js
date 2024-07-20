@@ -32,6 +32,9 @@ export default class View {
     messages.lastElementChild.scrollIntoView()
   }
   focus() {
+    console.log(this)
+    const element = this._element()
+
     this._element().querySelector('.input-box').focus()
   }
 

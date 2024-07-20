@@ -1,9 +1,21 @@
+:root {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #333333;
+  --color-primary: #e6e6e6;
+  --color-secondary: #999999;
+  /*  */
+
+  --bg-ternary: #333333;
+  --bg-quaternery: #4d4d4d;
+}
+
 html {
   font-size: 62.5%;
 }
 
 body {
-  background-color: rgb(238, 238, 238);
+  background-color: var(--bg-primary);
+  color: var(--color-primary);
   font-size: 1.6rem;
   font-family: 'Roboto', sans-serif;
 }
@@ -19,7 +31,6 @@ header {
 header h1 {
   font-size: 3rem;
   text-align: center;
-  color: #333;
 }
 header img {
   width: 4rem;
@@ -35,7 +46,7 @@ header img {
 .alert {
   position: absolute;
   top: 0;
-  color: #fff;
+
   margin-left: 50%;
   transform: translateX(-50%);
   margin-top: 1rem;
@@ -54,8 +65,8 @@ header img {
   width: 35rem;
   margin-top: 1rem;
   border-radius: 1rem;
-  box-shadow: 0px 0.3rem 1rem 0.1rem #ddddddbf;
-  background: #fff;
+
+  background: var(--bg-secondary);
 }
 
 .form-login div {
@@ -66,17 +77,19 @@ header img {
 }
 
 input {
+  color: inherit;
   height: 2.7rem;
-  border: 0.1rem solid #555;
+  border: 0.1rem solid var(--color-secondary);
   border-radius: 0.5rem;
   font-size: inherit;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+  background-color: var(--bg-ternary);
 }
 
-input:hover {
-  background-color: #e9e6e6;
-}
+/* input:hover {
+  background-color: var(--bg-ternary);
+} */
 
 button {
   border-radius: 10rem;
@@ -88,7 +101,7 @@ button {
 .btn {
   background: #4e4eff;
   padding: 1.5rem;
-  color: #fff;
+  color: inherit;
   border: none;
 }
 
@@ -97,15 +110,14 @@ button {
 }
 
 .link {
-  background: #fff;
+  background-color: var(--bg-ternary);
   padding: 1.5rem;
-  color: #888;
-
-  border: 0.2rem solid #888;
+  color: inherit;
+  border: 0.2rem solid var(--color-secondary);
 }
 
 .link:hover {
-  inset: 2.3px solid #333;
+  inset: 2.3px solid var(--bg-quaternery);
 }
 
 hr {

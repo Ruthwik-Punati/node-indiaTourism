@@ -10,8 +10,8 @@ class Chat extends View {
 
   _generateMarkUp(data) {
     const name = Model.getSelectedContact().user.name
-    return ` <div class="chat"><div class="selected">
-        <img class="arrow back cursor-p" src="svgs/arrow.svg" />
+    return ` <div class="chat bg-img"><div class="selected">
+        <img class="arrow back cursor-p"  />
        ${letterDp.render(name)}
         <h1 class="name">${name}</h1>
    
@@ -24,7 +24,7 @@ class Chat extends View {
     try {
       return super.render(data)
     } finally {
-      sendForm.focus()
+      // sendForm.focus()
     }
   }
 

@@ -11,8 +11,8 @@ class GroupChat extends View {
   _generateMarkUp(data) {
     const name = model.getSelectedGroup().name
 
-    return `<div class="chat groupChat"> <div class="selected">
-        <img class="arrow back cursor-p" src="svgs/arrow.svg" />
+    return `<div class="chat  groupChat bg-img"> <div class="selected">
+        <img class="arrow back cursor-p"  />
     ${letterDp.render(name)}
         <h1 class="name">${name}</h1>
      

@@ -71,7 +71,7 @@ module.exports.login = catchAsync(async (req, res, next) => {
   }
 
   if (user && !(await user.comparePassword(req.body.password, user.password))) {
-    next(new AppError('Wrong password!', 401))
+    next(new AppError('Wrong password!', 404))
     return
   }
   sendToken(user, res)
@@ -116,7 +116,7 @@ module.exports.forgotPassword = catchAsync(async (req, res, next) => {
   const user = await User.findOne({ email: req.body.email })
 
   if (!user) {
-    next(new AppError('Invalid email!'))
+    next(new AppError('Invalid email!', 404))
   }
 
   const resetToken = await user.createResetPasswordToken()
@@ -160,7 +160,7 @@ module.exports.validateResetToken = catchAsync(async (req, res, next) => {
 })
 
 module.exports.resetPasswordPage = catchAsync(async (req, res, next) => {
-  const resetPasswordPage = fs.readFileSync(`../frontend/dist/reset.html`)
+  const resetPasswordPage = fs.readFileSync(`../frontend/login/dist/reset.html`)
 
   res.end(resetPasswordPage)
 })
