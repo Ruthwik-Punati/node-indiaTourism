@@ -4,6 +4,7 @@ import model from '../model'
 import sendForm from './sendForm'
 import groupMessages from './groupMessages'
 import letterDp from './letterDp'
+import groupMessage from './groupMessage'
 
 class GroupChat extends View {
   _element = () => document.querySelector('.chat')
@@ -37,8 +38,28 @@ class GroupChat extends View {
     try {
       return super.render(data)
     } finally {
-      sendForm.focus()
+      this._element().querySelector('.input-box').focus()
     }
+  }
+
+  addNewMessage({ msg, prevMsg }) {
+    if (!prevMsg) {
+      this.removeStartConversation()
+    }
+
+    const user = model.getUser()
+    const isSenderTheUser = msg.sender === user._id
+    const sameSenderAsPrev = prevMsg?.sender === msg.sender
+
+    sameSenderAsPrev &&
+      this._element().lastElementChild.classList.remove(
+        isSenderTheUser ? 'bbrr-0' : 'bblr-0'
+      )
+
+    const newMessage = groupMessage.render({ item: msg, prevItem: prevMsg })
+    this._element()
+      .querySelector('.messages')
+      .insertAdjacentHTML('beforeend', newMessage)
   }
 }
 

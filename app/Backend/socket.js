@@ -13,7 +13,7 @@ const UserModel = require('./models/userModel')
 const generateChat = require('./ai/geminiChat')
 
 const ioInit = function (server) {
-  let io = socketIO(server)
+  let io = socketIO(server, { connectionStateRecovery: {} })
   io.adapter(createAdapter())
   setupWorker(io)
   io.on('connection', (socket) => {
@@ -49,16 +49,20 @@ const ioInit = function (server) {
       })
 
       contactsInInbox.with = [...contactsInInbox.with, ...usersNotInContacts]
+      contactsInInbox.with.forEach((contact) => {
+        socket.join(createRoomId(user, contact.user._id.toString()))
+      })
 
+      groups.forEach((group) => {
+        socket.join(group._id.toString())
+      })
       const contacts = { ...contactsInInbox._doc, groups }
 
       socket.emit('contacts', contacts)
     })
 
     socket.on('groupMessages', async (group) => {
-      const groupMessages = await GroupMessages.find({ group })
-
-      socket.join(group)
+      const groupMessages = await GroupMessages.find({ group }).sort('sentAt')
 
       socket.emit('groupMessages', groupMessages)
     })
@@ -69,9 +73,9 @@ const ioInit = function (server) {
         sender: user,
         message,
       })
-      io.sockets.in(group).emit('groupMessage', msg)
 
       await Group.findByIdAndUpdate(group, { $set: { lastMsg: msg._id } })
+      io.sockets.in(group).emit('groupMessage', msg)
     })
 
     socket.on('messages', async (user, chatWith) => {
@@ -85,9 +89,9 @@ const ioInit = function (server) {
           },
         ],
       }
-      const messages = await Message.find(query)
+      const messages = await Message.find(query).sort('sentAt')
 
-      socket.join(createRoomId(user, chatWith))
+      // socket.join(createRoomId(user, chatWith))
 
       socket.emit('messages', messages)
     })
@@ -99,8 +103,6 @@ const ioInit = function (server) {
         return
       }
       const msg = await Message.create({ sender, receiver, message })
-
-      io.sockets.in(createRoomId(sender, receiver)).emit('message', msg)
 
       if (receiver === `${process.env.GOOGLE_AI_ID}`) {
         // const returnMsg = await generateChat(message)
@@ -140,10 +142,21 @@ const ioInit = function (server) {
           ),
         ])
       }
+
+      try {
+        io.sockets.in(createRoomId(sender, receiver)).emit('message', msg)
+      } catch (err) {
+        console.error(err)
+      }
     }
 
     socket.on('message', handleMessage)
-
+    socket.on('ping', () => {
+      console.log('ping')
+      setTimeout(() => {
+        socket.emit('pong')
+      }, 5000)
+    })
     // when server disconnects from user
     socket.on('disconnect', () => {
       console.log('disconnected from user')

@@ -18,14 +18,13 @@ export function changeTimeFormat(date) {
 export function addEvent(eventName, className, handler) {
   document.addEventListener(eventName, function (e) {
     if (e.target.closest(className)) {
-      console.log(className, e)
       handler(e)
     }
   })
 }
 
 export function getModLastMsg(lastMsg) {
-  return `${lastMsg.substr(0, 45) + (lastMsg.length > 45 ? '...' : '')}`
+  return `${lastMsg.substr(0, 35) + (lastMsg.length > 35 ? '...' : '')}`
 }
 
 export function stringToHslColor(str, s = '50', l = '80', a = '0.8') {

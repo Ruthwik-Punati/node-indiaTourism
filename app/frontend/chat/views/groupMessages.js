@@ -5,7 +5,7 @@ import groupMessage from './groupMessage'
 import model from '../model'
 
 class GroupMessages extends View {
-  _element = () => document.querySelector('.messages')
+  // _element = () => document.querySelector('.messages')
   _generateMarkUp(data) {
     return `<div class="messages">
      ${
@@ -25,24 +25,6 @@ class GroupMessages extends View {
             })
             .join('')}
         </div>`
-  }
-
-  addNewMessage({ msg, prevMsg }) {
-    if (!prevMsg) {
-      this.removeStartConversation()
-    }
-
-    const user = model.getUser()
-    const isSenderTheUser = msg.sender === user._id
-    const sameSenderAsPrev = prevMsg?.sender === msg.sender
-
-    sameSenderAsPrev &&
-      this._element().lastElementChild.classList.remove(
-        isSenderTheUser ? 'bbrr-0' : 'bblr-0'
-      )
-
-    const newMessage = groupMessage.render({ item: msg, prevItem: prevMsg })
-    this._element().insertAdjacentHTML('beforeend', newMessage)
   }
 }
 

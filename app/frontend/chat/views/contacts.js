@@ -19,7 +19,7 @@ class Contacts extends View {
     try {
       return super.render(data)
     } finally {
-      searchForm.focus()
+      this._element().querySelector('.input-box').focus()
     }
   }
 }

@@ -4,6 +4,8 @@ import sendForm from './sendForm'
 import messages from './messages'
 import letterDp from './letterDp'
 import searchForm from './searchForm'
+import model from '../model'
+import message from './message'
 
 class Chat extends View {
   _element = () => document.querySelector('.chat')
@@ -24,7 +26,7 @@ class Chat extends View {
     try {
       return super.render(data)
     } finally {
-      // sendForm.focus()
+      this._element().querySelector('.input-box').focus()
     }
   }
 
@@ -40,6 +42,25 @@ class Chat extends View {
       handler(e.target.value)
       e.target.value = ''
     })
+  }
+  addNewMessage({ msg, prevMsg }) {
+    if (!prevMsg) {
+      this.removeStartConversation()
+    }
+
+    const user = model.getUser()
+    const isSenderTheUser = msg.sender === user._id
+    const sameSenderAsPrev = prevMsg?.sender === msg.sender
+
+    sameSenderAsPrev &&
+      this._element().lastElementChild.classList.remove(
+        isSenderTheUser ? 'bbrr-0' : 'bblr-0'
+      )
+
+    const newMessage = message.render({ item: msg, prevItem: prevMsg })
+    this._element()
+      .querySelector('.messages')
+      .insertAdjacentHTML('beforeend', newMessage)
   }
 }
 

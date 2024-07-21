@@ -78,6 +78,40 @@ class Model {
   getFilteredContacts() {
     return this.state.filteredContacts
   }
+
+  setPage(page) {
+    this.state.page = page
+  }
+
+  getPage() {
+    return this.state.page
+  }
+
+  isPage(page) {
+    return this.state.page === page
+  }
+
+  getMessageSender(sender) {
+    console.log(
+      this.state.contacts.with.find((contact) => contact.user._id === sender)
+    )
+    return this.state.contacts.with.find((contact) => {
+      console.log(contact.user._id, sender, contact.user._id === sender)
+      console.log(contact.user._id, sender, contact.user._id == sender)
+      console.log(
+        contact.user._id,
+        sender,
+        contact.user._id.toString() === sender
+      )
+      return contact.user._id === sender
+    }).user
+  }
+
+  getGroupMessageSender(sender) {
+    return this.state.contacts.groups[0].users.find(
+      (user) => user._id === sender
+    )
+  }
 }
 
 export default new Model()

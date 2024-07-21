@@ -15,12 +15,26 @@ import contactList from './views/contactList'
 
 import onlyContacts from './views/onlyContacts'
 import groupMessages from './views/groupMessages'
-import { addEvent } from './helper'
+
+const notificationPermission = Notification.permission === 'granted'
+if (!notificationPermission) {
+  Notification.requestPermission().then((perm) => {
+    alert(perm)
+  })
+}
+
+function sendNotification(sender, message, isSenderTheUser) {
+  if (notificationPermission && !isSenderTheUser && document.hidden) {
+    new Notification(sender, { body: message })
+  }
+}
 
 model.setUser()
 const user = model.getUser()
 
 function contactHandler(contactName) {
+  if (model.getPage() === 'contact') return
+
   model.setSelectedContact(contactName)
   const selectedContact = model.getSelectedContact()
 
@@ -28,10 +42,14 @@ function contactHandler(contactName) {
 }
 
 function emitContacts() {
+  if (model.getPage() === 'contacts') return
+
   socket.emit('contacts', user._id)
 }
 
 function groupHandler(groupName) {
+  if (model.getPage() === 'group') return
+
   model.setSelectedGroup(groupName)
 
   socket.emit('groupMessages', model.getSelectedGroup()._id)
@@ -40,7 +58,7 @@ function groupHandler(groupName) {
 function handlerSearch(searchText) {
   model.filterContacts(searchText)
 
-  contactList.render(model.getFilteredContacts())
+  contactList.update(model.getFilteredContacts())
 }
 
 function renderContacts(data) {
@@ -78,39 +96,88 @@ function addEvents() {
   chat.addBackToContactsHandler(emitContacts)
   searchForm.addHandlerSearch(handlerSearch)
 }
+
 function init() {
   socket.on('contacts', (data) => {
-    model.setContacts(data)
+    console.log('message received')
 
-    renderContacts(model.getContacts())
+    if (!model.isPage('contacts')) {
+      model.setPage('contacts')
+      model.setContacts(data)
+
+      renderContacts(model.getContacts())
+    } else {
+      contactList.update(data)
+    }
   })
 
   emitContacts()
 
-  socket.on('message', (message) => {
-    const prevMsg = model.getMessages().at(-1)
-    messages.addNewMessage({ msg: message, prevMsg })
-    model.addMessage(message)
+  socket.on('message', (msg) => {
+    const isSenderTheUser = msg.sender === user._id
 
-    messages.scrollBottom()
+    const senderName =
+      isSenderTheUser || model.getMessageSender(msg.sender).name
+
+    sendNotification(senderName, msg.message, isSenderTheUser)
+
+    if (model.isPage('contacts')) {
+      socket.emit('contacts', user._id)
+      return
+    }
+
+    if (!model.isPage('contact')) return
+
+    if (model.getSelectedContact().user._id === msg.sender || isSenderTheUser) {
+      const prevMsg = model.getMessages().at(-1)
+      chat.addNewMessage({ msg, prevMsg })
+      model.addMessage(msg)
+
+      messages.scrollBottom()
+    }
   })
 
   socket.on('messages', (messages) => {
+    model.setPage('contact')
     model.setMessages(messages)
     renderChat()
   })
 
   socket.on('groupMessages', (groupMessages) => {
+    model.setPage('group')
+
     model.setGroupMessages(groupMessages)
+
     renderGroupChat()
   })
 
   socket.on('groupMessage', (groupMessage) => {
+    const isSenderTheUser = groupMessage.sender === user._id
+
+    const senderName = model.getGroupMessageSender(groupMessage.sender).name
+
+    sendNotification(senderName, groupMessage.message, isSenderTheUser)
+
+    if (model.isPage('contacts')) {
+      socket.emit('contacts', user._id)
+      return
+    }
+
+    if (!model.isPage('group')) return
+
     const prevMsg = model.getGroupMessages().at(-1)
-    groupMessages.addNewMessage({ msg: groupMessage, prevMsg })
+    groupChat.addNewMessage({ msg: groupMessage, prevMsg })
     model.addGroupMessage(groupMessage)
     groupMessages.scrollBottom()
   })
+
+  socket.on('pong', () => {
+    setTimeout(() => {
+      socket.emit('ping')
+    }, 5000)
+  })
+
+  socket.emit('ping')
 
   addEvents()
 }

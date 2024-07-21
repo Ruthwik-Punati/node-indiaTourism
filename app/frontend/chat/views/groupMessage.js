@@ -1,4 +1,4 @@
-import { changeTimeFormat } from '../helper'
+import { changeTimeFormat, stringToHslColor } from '../helper'
 import model from '../model'
 import View from './view'
 
@@ -24,7 +24,9 @@ class GroupMessage extends View {
     ">
         ${
           !sameSenderAsPrev && !isSenderTheUser
-            ? `<span class="sender-name"> ${sender.name}</span>`
+            ? `<span  style="color:${stringToHslColor(
+                sender.name
+              )};" class="sender-name"> ${sender.name}</span>`
             : ''
         }
         ${item.message}

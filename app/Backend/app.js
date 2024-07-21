@@ -31,7 +31,7 @@ app.use(cookieParser())
 
 app.use('/india.html', protect)
 app.use('/chat.html', protect)
-
+app.use('/reset.html', protect)
 // serving static files
 app.use(express.static(`../frontend/indiaTourism`))
 app.use(express.static(`../frontend/login/dist`))
