@@ -48,6 +48,7 @@
 :root {
   --bg-primary: #1a1a1a;
   --bg-secondary: #333333;
+  --bg-ternary: #666666;
   --color-primary: #e6e6e6;
   --color-secondary: #999999;
 }
@@ -273,7 +274,7 @@ body {
 }
 
 .msg-right {
-  background-color: green;
+  background-color: var(--bg-ternary);
 
   margin-left: auto;
 
@@ -281,7 +282,7 @@ body {
   /* transform: translate(120%, 0); */
 }
 .msg-left {
-  background-color: grey;
+  background-color: var(--bg-secondary);
 
   margin-right: auto;
   /* for animation */

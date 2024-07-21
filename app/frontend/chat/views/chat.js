@@ -22,13 +22,13 @@ class Chat extends View {
         ${sendForm.render()} </div>`
   }
 
-  render(data) {
-    try {
-      return super.render(data)
-    } finally {
-      this._element().querySelector('.input-box').focus()
-    }
-  }
+  // render(data) {
+  //   try {
+  //     return super.render(data)
+  //   } finally {
+  //     this._element().querySelector('.input-box').focus()
+  //   }
+  // }
 
   addSendMessageHandler(handler) {
     sendForm.addSendInputHandler(function (e) {

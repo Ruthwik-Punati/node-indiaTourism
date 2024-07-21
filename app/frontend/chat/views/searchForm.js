@@ -13,8 +13,6 @@ class SearchForm extends View {
       e.preventDefault()
     })
 
-    addEvent('focus', '.search', function (e) {})
-
     addEvent('input', '.search', function (e) {
       handler(e.target.value)
     })

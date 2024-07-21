@@ -64,7 +64,7 @@ class Model {
     return this.state.selectedGroup
   }
 
-  filterContacts(searchText) {
+  filterContacts(searchText = '') {
     const filteredContacts = { ...this.state.contacts }
     filteredContacts.with = filteredContacts.with.filter((user) =>
       user.user.name.toLowerCase().includes(searchText.toLowerCase())

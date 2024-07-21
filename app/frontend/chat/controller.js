@@ -16,19 +16,6 @@ import contactList from './views/contactList'
 import onlyContacts from './views/onlyContacts'
 import groupMessages from './views/groupMessages'
 
-const notificationPermission = Notification.permission === 'granted'
-if (!notificationPermission) {
-  Notification.requestPermission().then((perm) => {
-    alert(perm)
-  })
-}
-
-function sendNotification(sender, message, isSenderTheUser) {
-  if (notificationPermission && !isSenderTheUser && document.hidden) {
-    new Notification(sender, { body: message })
-  }
-}
-
 model.setUser()
 const user = model.getUser()
 
@@ -99,15 +86,13 @@ function addEvents() {
 
 function init() {
   socket.on('contacts', (data) => {
-    console.log('message received')
-
+    model.setContacts(data)
     if (!model.isPage('contacts')) {
       model.setPage('contacts')
-      model.setContacts(data)
 
       renderContacts(model.getContacts())
     } else {
-      contactList.update(data)
+      contactList.update(model.getContacts())
     }
   })
 
@@ -183,3 +168,23 @@ function init() {
 }
 
 init()
+
+let notificationPermission = Notification.permission !== 'denied'
+if (!notificationPermission) {
+  Notification.requestPermission().then((perm) => {
+    notificationPermission = Notification.permission !== 'denied'
+  })
+}
+
+function sendNotification(sender, message, isSenderTheUser) {
+  if (notificationPermission && !isSenderTheUser && document.hidden) {
+    const notification = new Notification(sender, {
+      body: message,
+      icon: './boyonmoon.png',
+    })
+    notification.onclick = (event) => {
+      event.preventDefault() // prevent the browser from focusing the Notification's tab
+      window.open('https://daydreams.website/chat.html')
+    }
+  }
+}

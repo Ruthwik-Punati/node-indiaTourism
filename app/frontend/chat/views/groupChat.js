@@ -34,13 +34,13 @@ class GroupChat extends View {
     })
   }
 
-  render(data) {
-    try {
-      return super.render(data)
-    } finally {
-      this._element().querySelector('.input-box').focus()
-    }
-  }
+  // render(data) {
+  //   try {
+  //     return super.render(data)
+  //   } finally {
+  //     this._element().querySelector('.input-box').focus()
+  //   }
+  // }
 
   addNewMessage({ msg, prevMsg }) {
     if (!prevMsg) {
