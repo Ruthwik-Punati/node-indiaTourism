@@ -2,11 +2,11 @@
   --bg-primary: #1a1a1a;
   --bg-secondary: #333333;
   --color-primary: #e6e6e6;
-  --color-secondary: #999999;
+  --color-secondary: #808080;
   /*  */
 
-  --bg-ternary: #333333;
-  --bg-quaternery: #4d4d4d;
+  --bg-ternary: #4d4d4d;
+  --bg-quaternary: #666666;
 }
 
 html {
@@ -85,11 +85,11 @@ input {
   font-size: inherit;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  background-color: var(--bg-ternary);
+  background-color: var(--bg-secondary);
 }
 
 /* input:hover {
-  background-color: var(--bg-ternary);
+  background-color: var(--bg-secondary);
 } */
 
 button {
@@ -100,25 +100,25 @@ button {
 }
 
 .btn {
-  background: #4e4eff;
+  background: var(--bg-quaternary);
   padding: 1.5rem;
   color: inherit;
   border: none;
 }
 
 .btn:hover {
-  background: #2626fb;
+  background: var(--bg-ternary);
 }
 
 .link {
-  background-color: var(--bg-ternary);
+  background-color: var(--bg-secondary);
   padding: 1.5rem;
   color: inherit;
   border: 0.2rem solid var(--color-secondary);
 }
 
 .link:hover {
-  inset: 2.3px solid var(--bg-quaternery);
+  inset: 2.3px solid var(--bg-ternary);
 }
 
 hr {

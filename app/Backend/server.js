@@ -27,7 +27,7 @@ process.on('unhandledRejection', (err) => {
   console.log('uncaughtException' + ' ' + err)
 })
 
-const port = 443
+const port = 80
 
 // cluster.schedulingPolicy = cluster.SCHED_RR
 if (cluster.isMaster) {
