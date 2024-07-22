@@ -16,6 +16,23 @@ import contactList from './views/contactList'
 import onlyContacts from './views/onlyContacts'
 import groupMessages from './views/groupMessages'
 
+navigator.serviceWorker.register(new URL('sw.js', import.meta.url))
+
+const perm = await Notification.requestPermission()
+console.log(perm)
+function sendNotification(sender, message, isSenderTheUser) {
+  if (perm === 'granted' && !isSenderTheUser && document.hidden) {
+    navigator.serviceWorker.ready.then((registration) => {
+      console.log(registration)
+      registration.showNotification(sender, {
+        body: message,
+        icon: 'boyonmoon.png',
+        vibrate: [200, 100, 200, 100, 200, 100, 200],
+      })
+    })
+  }
+}
+
 model.setUser()
 const user = model.getUser()
 
@@ -169,22 +186,15 @@ function init() {
 
 init()
 
-let notificationPermission = Notification.permission !== 'denied'
-if (!notificationPermission) {
-  Notification.requestPermission().then((perm) => {
-    notificationPermission = Notification.permission !== 'denied'
-  })
-}
-
-function sendNotification(sender, message, isSenderTheUser) {
-  if (notificationPermission && !isSenderTheUser && document.hidden) {
-    const notification = new Notification(sender, {
-      body: message,
-      icon: './boyonmoon.png',
-    })
-    notification.onclick = (event) => {
-      event.preventDefault() // prevent the browser from focusing the Notification's tab
-      window.open('https://daydreams.website/chat.html')
-    }
-  }
-}
+// function sendNotification(sender, message, isSenderTheUser) {
+//   if (notificationPermission && !isSenderTheUser && document.hidden) {
+//     const notification = new Notification(sender, {
+//       body: message,
+//       icon: './boyonmoon.png',
+//     })
+//     notification.onclick = (event) => {
+//       event.preventDefault() // prevent the browser from focusing the Notification's tab
+//       window.open('https://daydreams.website/chat.html')
+//     }
+//   }
+// }
