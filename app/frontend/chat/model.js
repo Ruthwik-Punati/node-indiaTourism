@@ -43,6 +43,10 @@ class Model {
   }
 
   setSelectedContact(contactName) {
+    if (!contactName) {
+      this.state.selectedContact = null
+      return
+    }
     const selectedContact = this.getContacts().with.find(
       (contact) => contact.user.name === contactName
     )
@@ -54,6 +58,10 @@ class Model {
   }
 
   setSelectedGroup(groupName) {
+    if (!groupName) {
+      this.state.selectedGroup = null
+      return
+    }
     const selectedGroup = this.getContacts().groups.find(
       (group) => group.name === groupName
     )

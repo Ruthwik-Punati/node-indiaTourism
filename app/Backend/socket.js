@@ -155,7 +155,7 @@ const ioInit = function (server) {
       console.log('ping')
       setTimeout(() => {
         socket.emit('pong')
-      }, 5000)
+      }, 2000)
     })
     // when server disconnects from user
     socket.on('disconnect', () => {

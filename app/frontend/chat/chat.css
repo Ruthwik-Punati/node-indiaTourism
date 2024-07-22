@@ -329,6 +329,10 @@ body {
     width: 100%;
   }
 
+  .messages {
+    height: calc(100% - 15rem);
+  }
+
   .selected {
     width: 100%;
   }

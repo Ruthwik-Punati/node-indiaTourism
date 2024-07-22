@@ -26,11 +26,13 @@ class GroupChat extends View {
       if (e.target.closest('.send-btn')) {
         handler(e.target.previousSibling.value)
         e.target.previousSibling.value = ''
+        e.target.previousSibling.focus()
 
         return
       }
       handler(e.target.value)
       e.target.value = ''
+      e.target.focus()
     })
   }
 

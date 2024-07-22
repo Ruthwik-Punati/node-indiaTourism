@@ -32,6 +32,10 @@ export default class View {
     messages.lastElementChild.scrollIntoView()
   }
 
+  sendFocus() {
+    document.querySelector('.send').focus()
+  }
+
   blur() {
     this._element()?.querySelector('.input-box')?.blur()
   }

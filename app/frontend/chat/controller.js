@@ -19,9 +19,9 @@ import groupMessages from './views/groupMessages'
 navigator.serviceWorker.register(new URL('sw.js', import.meta.url))
 
 const perm = await Notification.requestPermission()
-console.log(perm)
-function sendNotification(sender, message, isSenderTheUser) {
-  if (perm === 'granted' && !isSenderTheUser && document.hidden) {
+
+function sendNotification(sender, message) {
+  if (perm === 'granted') {
     navigator.serviceWorker.ready.then((registration) => {
       console.log(registration)
       registration.showNotification(sender, {
@@ -47,6 +47,9 @@ function contactHandler(contactName) {
 
 function emitContacts() {
   if (model.getPage() === 'contacts') return
+
+  model.setSelectedContact('')
+  model.setSelectedGroup('')
 
   socket.emit('contacts', user._id)
 }
@@ -81,9 +84,13 @@ function renderGroupChat() {
 }
 
 function messageHandler(message) {
+  if (!message.trim()) return
+
   socket.emit('message', user._id, model.getSelectedContact().user._id, message)
 }
 function groupMessageHandler(groupMessage) {
+  if (!groupMessage.trim()) return
+
   socket.emit(
     'groupMessage',
     user._id,
@@ -121,7 +128,14 @@ function init() {
     const senderName =
       isSenderTheUser || model.getMessageSender(msg.sender).name
 
-    sendNotification(senderName, msg.message, isSenderTheUser)
+    const isSenderSelectedContact =
+      model.getSelectedContact()?.user?._id === msg.sender
+
+    if (!isSenderTheUser) {
+      if (!isSenderSelectedContact || document.hidden) {
+        sendNotification(senderName, msg.message)
+      }
+    }
 
     if (model.isPage('contacts')) {
       socket.emit('contacts', user._id)
@@ -139,26 +153,18 @@ function init() {
     }
   })
 
-  socket.on('messages', (messages) => {
-    model.setPage('contact')
-    model.setMessages(messages)
-    renderChat()
-  })
-
-  socket.on('groupMessages', (groupMessages) => {
-    model.setPage('group')
-
-    model.setGroupMessages(groupMessages)
-
-    renderGroupChat()
-  })
-
   socket.on('groupMessage', (groupMessage) => {
     const isSenderTheUser = groupMessage.sender === user._id
 
     const senderName = model.getGroupMessageSender(groupMessage.sender).name
 
-    sendNotification(senderName, groupMessage.message, isSenderTheUser)
+    const isGroupSelectedGroup = model.getSelectedGroup()
+
+    if (!isSenderTheUser) {
+      if (!isGroupSelectedGroup || document.hidden) {
+        sendNotification(senderName, groupMessage.message)
+      }
+    }
 
     if (model.isPage('contacts')) {
       socket.emit('contacts', user._id)
@@ -173,10 +179,24 @@ function init() {
     groupMessages.scrollBottom()
   })
 
+  socket.on('messages', (messages) => {
+    model.setPage('contact')
+    model.setMessages(messages)
+    renderChat()
+  })
+
+  socket.on('groupMessages', (groupMessages) => {
+    model.setPage('group')
+
+    model.setGroupMessages(groupMessages)
+
+    renderGroupChat()
+  })
+
   socket.on('pong', () => {
     setTimeout(() => {
       socket.emit('ping')
-    }, 5000)
+    }, 2000)
   })
 
   socket.emit('ping')
@@ -185,6 +205,10 @@ function init() {
 }
 
 init()
+
+// setTimeout(() => {
+//   alert(`Notification setting is ${perm}`)
+// }, 1000)
 
 // function sendNotification(sender, message, isSenderTheUser) {
 //   if (notificationPermission && !isSenderTheUser && document.hidden) {
