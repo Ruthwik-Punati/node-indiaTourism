@@ -26,11 +26,9 @@
 
 .bg-img {
   background-image: url(./assets/photos/wallpaper-2.jpg);
-  background-position: bottom;
-  background-repeat: no-repeat;
 
-  background-attachment: fixed;
-  background-blend-mode: normal;
+  background-size: 110% auto;
+  background-position: top;
 }
 
 /* // <uniquifier>: Use a unique and descriptive class name
@@ -48,12 +46,13 @@
 :root {
   --bg-primary: #1a1a1a;
   --bg-secondary: #333333;
-  --bg-ternary: #666666;
+  --bg-ternary: #5a5a5a;
   --color-primary: #e6e6e6;
-  --color-secondary: #999999;
+  --color-secondary: #b3b3b3;
+  --color-ternary: #999999;
 }
 html {
-  background-color: rgb(108, 148, 111, 0.5);
+  background-color: #43434380;
   font-size: 62.5%;
   /* background-color: black; */
 }
@@ -93,7 +92,7 @@ body {
   background-attachment: fixed;
   background-blend-mode: normal; */
   flex-direction: column;
-  height: calc(100% - 13rem);
+  height: calc(100% - 12rem);
   margin-top: 7rem;
   padding: 0 1rem;
   display: flex;
@@ -106,7 +105,7 @@ body {
   display: flex;
 
   padding: 1rem 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   border-radius: 0.5rem;
   gap: 1.5rem;
   align-items: center;
@@ -121,10 +120,12 @@ body {
 }
 
 .contactCard .name {
+  margin-bottom: 0.2rem;
   font-size: 2rem;
   font-weight: 600;
 }
 .groupCard .name {
+  margin-bottom: 0.2rem;
   font-size: 2rem;
   font-weight: 600;
 }
@@ -185,17 +186,17 @@ body {
 }
 
 .input-box::placeholder {
-  color: var(--color-secondary);
+  color: var(--color-ternary);
 }
 
 .send-form {
   width: calc(41.2rem);
   z-index: 100;
 
-  padding: 1rem 1rem;
+  padding: 1rem;
   position: fixed;
   bottom: 0;
-  padding-bottom: 2rem;
+
   display: flex;
 }
 
@@ -243,9 +244,9 @@ body {
 .msg {
   border-radius: 1.3rem;
   width: auto;
-  margin: 0 1rem;
-  padding: 0.8rem 1.2rem;
   max-width: 80%;
+  margin: 0 1rem;
+  padding: 0.6rem 0.9rem;
 
   /* for animation */
   /* 
@@ -255,22 +256,24 @@ body {
 
 .start-conversation {
   margin: auto;
-  color: var(--color-secondary);
+  color: var(--color-ternary);
   font-weight: 800;
 }
 
 .sender-name {
   display: block;
   font-size: 1.2rem;
-  font-weight: 800;
+  font-weight: 700;
   max-width: 100%;
+  margin-bottom: 0.5rem;
 }
 
 .sent-at {
-  font-size: 1.2rem;
   float: right;
-  margin-top: 1rem;
-  margin-left: 1rem;
+  margin-top: 0.7rem;
+  margin-left: 1.2rem;
+  font-size: 1.2rem;
+  color: var(--color-secondary);
 }
 
 .msg-right {
@@ -294,8 +297,8 @@ body {
 }
 
 .last-msg {
-  font-size: 1.4rem;
-  color: var(--color-secondary);
+  font-size: 1.5rem;
+  color: var(--color-ternary);
 }
 
 ::-webkit-scrollbar {
@@ -309,13 +312,13 @@ body {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background-color: var(--color-secondary);
+  background-color: var(--color-ternary);
   border-radius: 2rem;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-secondary);
+  background: var(--color-ternary);
 }
 
 @media screen and (max-width: 50em) {
@@ -330,7 +333,7 @@ body {
   }
 
   .messages {
-    height: calc(100% - 15rem);
+    height: calc(100% - 13rem);
   }
 
   .selected {

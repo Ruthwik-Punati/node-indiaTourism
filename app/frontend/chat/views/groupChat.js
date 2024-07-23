@@ -54,9 +54,11 @@ class GroupChat extends View {
     const sameSenderAsPrev = prevMsg?.sender === msg.sender
 
     sameSenderAsPrev &&
-      this._element().lastElementChild.classList.remove(
-        isSenderTheUser ? 'bbrr-0' : 'bblr-0'
-      )
+      this._element()
+        ?.querySelector('.messages')
+        ?.lastElementChild?.classList?.remove(
+          isSenderTheUser ? 'bbrr-0' : 'bblr-0'
+        )
 
     const newMessage = groupMessage.render({ item: msg, prevItem: prevMsg })
     this._element()

@@ -13,6 +13,7 @@ class GroupMessage extends View {
     const sameSenderAsNext = nextItem?.sender === item.sender
 
     const isSenderTheUser = item.sender === user._id
+
     return `<p class="msg ${!isSenderTheUser ? 'msg-left' : 'msg-right'} ${
       sameSenderAsPrev ? 'mt-sm' : 'mt-md'
     }  

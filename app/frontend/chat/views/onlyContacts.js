@@ -6,7 +6,6 @@ class OnlyContacts extends View {
   _generateMarkUp(contacts) {
     return ` ${contacts
       .map((contact) => {
-        console.log(contact)
         const lastMsg = contact.lastMsg?.message
         const name = contact.user.name
 

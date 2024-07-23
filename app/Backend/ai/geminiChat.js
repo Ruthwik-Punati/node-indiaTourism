@@ -8,11 +8,11 @@ const geminiConfig = {
   temperature: 0.9,
   topP: 1,
   topK: 1,
-  maxOutputTokens: 4096,
+  maxOutputTokens: 200,
 }
 
 const geminiModel = googleAI.getGenerativeModel({
-  model: 'gemini-pro',
+  model: 'gemini-1.5-pro',
   geminiConfig,
 })
 

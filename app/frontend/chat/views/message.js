@@ -9,6 +9,7 @@ class Message extends View {
     const isSenderTheUser = item.sender === user._id
     const sameSenderAsPrev = prevItem?.sender === item.sender
     const sameSenderAsNext = nextItem?.sender === item.sender
+
     return `
       <p class="msg ${item.sender !== user._id ? 'msg-left' : 'msg-right'} ${
       sameSenderAsPrev ? 'mt-sm' : 'mt-md'

@@ -13,7 +13,11 @@ const UserModel = require('./models/userModel')
 const generateChat = require('./ai/geminiChat')
 
 const ioInit = function (server) {
-  let io = socketIO(server, { connectionStateRecovery: {} })
+  let io = socketIO(server, {
+    connectionStateRecovery: {},
+    // pingInterval: 1000, // how often to ping/pong.
+    // pingTimeout: 30000, // time after which the connection is considered timed-out.
+  })
   io.adapter(createAdapter())
   setupWorker(io)
   io.on('connection', (socket) => {

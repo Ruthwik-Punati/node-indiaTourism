@@ -39,8 +39,9 @@ export default class View {
   blur() {
     this._element()?.querySelector('.input-box')?.blur()
   }
+
   removeStartConversation() {
-    this.element()?.querySelector('.start-conversation')?.remove()
+    document.querySelector('.messages').textContent = ''
   }
 
   update(data) {
@@ -56,7 +57,7 @@ export default class View {
     // updates changed text
     newElements.forEach((newEl, i) => {
       let curEl = currElements[i]
-      console.log(curEl, '-----', newEl)
+
       if (!curEl) {
         parentEl.appendChild(newEl)
 
