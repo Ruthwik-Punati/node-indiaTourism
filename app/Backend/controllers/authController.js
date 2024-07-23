@@ -115,7 +115,7 @@ module.exports.protect = catchAsync(async (req, res, next) => {
   const user = await User.findById(id)
 
   if (!user) {
-    next(new AppError('user not found', 404))
+    next(new AppError('user not found', 401))
   }
 
   if (await user.isPasswordChangedAfterLogin(iat)) {

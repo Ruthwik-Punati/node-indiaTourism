@@ -143,7 +143,10 @@ function init() {
 
     if (!model.isPage('contact')) return
 
-    if (model.getSelectedContact().user._id === msg.sender || isSenderTheUser) {
+    if (
+      model.getSelectedContact()?.user?._id === msg.sender ||
+      isSenderTheUser
+    ) {
       const prevMsg = model.getMessages().at(-1)
       chat.addNewMessage({ msg, prevMsg })
       model.addMessage(msg)
