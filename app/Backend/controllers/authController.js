@@ -67,7 +67,7 @@ module.exports.signUp = catchAsync(async (req, res, next) => {
         },
       }
     ),
-    await Inbox.updateOne(
+    await inboxModel.updateOne(
       { user: `${process.env.GOOGLE_AI_ID}` },
       {
         $push: {
