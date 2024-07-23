@@ -10,6 +10,7 @@ const AppError = require('../AppError')
 const sendMail = require('../nodeMailer')
 const inboxModel = require('../models/chat/inboxModel')
 const Group = require('../models/chat/groupModel')
+const messageModel = require('../models/chat/messageModel')
 
 function JWTToken(user) {
   return JWT.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET, {
@@ -49,13 +50,37 @@ module.exports.validateEmail = catchAsync(async (req, res, next) => {
 module.exports.signUp = catchAsync(async (req, res, next) => {
   const user = await User.create(req.body)
 
-  sendToken(user, res)
   await inboxModel.create({ user: user._id, with: [] })
-  const g = await Group.findOneAndUpdate(
-    { name: 'Dream Team' },
-    { $push: { users: user.id } }
-  )
-  console.log(g)
+
+  const message = await messageModel.create({
+    sender: `${process.env.GOOGLE_AI_ID}`,
+    receiver: user._id,
+    message: `Hi ${user.name}`,
+  })
+
+  await Promise.all([
+    await inboxModel.updateOne(
+      { user: user._id },
+      {
+        $push: {
+          with: { user: `${process.env.GOOGLE_AI_ID}`, lastMsg: message._id },
+        },
+      }
+    ),
+    await Inbox.updateOne(
+      { user: `${process.env.GOOGLE_AI_ID}` },
+      {
+        $push: {
+          with: { user: user._id, lastMsg: message._id },
+        },
+      }
+    ),
+    await Group.findOneAndUpdate(
+      { name: 'Dream Team' },
+      { $push: { users: user.id } }
+    ),
+  ])
+  sendToken(user, res)
 })
 
 module.exports.login = catchAsync(async (req, res, next) => {
