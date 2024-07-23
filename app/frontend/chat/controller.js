@@ -23,7 +23,6 @@ const perm = await Notification.requestPermission()
 function sendNotification(sender, message) {
   if (perm === 'granted') {
     navigator.serviceWorker.ready.then((registration) => {
-      console.log(registration)
       registration.showNotification(sender, {
         body: message,
         icon: 'boyonmoon.png',

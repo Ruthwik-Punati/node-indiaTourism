@@ -55,7 +55,7 @@ module.exports.signUp = catchAsync(async (req, res, next) => {
   const message = await messageModel.create({
     sender: `${process.env.GOOGLE_AI_ID}`,
     receiver: user._id,
-    message: `Hi ${user.name}`,
+    message: `Welcome, ${user.name}!`,
   })
 
   await Promise.all([

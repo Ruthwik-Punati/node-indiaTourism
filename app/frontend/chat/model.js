@@ -104,13 +104,6 @@ class Model {
       this.state.contacts.with.find((contact) => contact.user._id === sender)
     )
     return this.state.contacts.with.find((contact) => {
-      console.log(contact.user._id, sender, contact.user._id === sender)
-      console.log(contact.user._id, sender, contact.user._id == sender)
-      console.log(
-        contact.user._id,
-        sender,
-        contact.user._id.toString() === sender
-      )
       return contact.user._id === sender
     }).user
   }
