@@ -50,23 +50,18 @@ module.exports.validateEmail = catchAsync(async (req, res, next) => {
 module.exports.signUp = catchAsync(async (req, res, next) => {
   const user = await User.create(req.body)
 
-  await inboxModel.create({ user: user._id, with: [] })
-
   const message = await messageModel.create({
     sender: `${process.env.GOOGLE_AI_ID}`,
     receiver: user._id,
     message: `Welcome, ${user.name}!`,
   })
 
+  await inboxModel.create({
+    user: user._id,
+    with: [{ user: `${process.env.GOOGLE_AI_ID}`, lastMsg: message._id }],
+  })
+
   await Promise.all([
-    await inboxModel.updateOne(
-      { user: user._id },
-      {
-        $push: {
-          with: { user: `${process.env.GOOGLE_AI_ID}`, lastMsg: message._id },
-        },
-      }
-    ),
     await inboxModel.updateOne(
       { user: `${process.env.GOOGLE_AI_ID}` },
       {
