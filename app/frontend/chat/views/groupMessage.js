@@ -18,10 +18,9 @@ class GroupMessage extends View {
       sameSenderAsPrev ? 'mt-sm' : 'mt-md'
     }  
     
-    ${
-      (!sameSenderAsNext || !nextItem) &&
-      (!isSenderTheUser ? 'bblr-0' : 'bbrr-0')
-    }
+ 
+    ${sameSenderAsPrev ? (isSenderTheUser ? 'btrr-0' : 'btlr-0') : ''}
+    ${sameSenderAsNext ? (isSenderTheUser ? 'bbrr-0' : 'bblr-0') : ''}
     ">
         ${
           !sameSenderAsPrev && !isSenderTheUser

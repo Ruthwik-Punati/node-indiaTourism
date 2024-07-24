@@ -20,11 +20,11 @@ const cluster = require('cluster')
 const numCPUs = require('os').cpus().length
 
 process.on('uncaughtException', (err) => {
-  console.error('uncaughtException' + ' ' + err)
+  console.error('uncaughtException' + ' ' + err + err.stack)
 })
 
 process.on('unhandledRejection', (err) => {
-  console.error('uncaughtException' + ' ' + err)
+  console.error('uncaughtException' + ' ' + err + err.stack)
 })
 
 const port = 80

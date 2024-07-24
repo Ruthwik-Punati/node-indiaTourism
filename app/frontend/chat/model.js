@@ -1,7 +1,3 @@
-import contacts from './views/contacts'
-
-export const state = { messages: [] }
-
 class Model {
   state = {}
 
@@ -100,9 +96,6 @@ class Model {
   }
 
   getMessageSender(sender) {
-    console.log(
-      this.state.contacts.with.find((contact) => contact.user._id === sender)
-    )
     return this.state.contacts.with.find((contact) => {
       return contact.user._id === sender
     }).user

@@ -99,6 +99,7 @@ function groupMessageHandler(groupMessage) {
 }
 
 function addEvents() {
+  chat.toggleLightMode()
   onlyContacts.addSelectHandler(contactHandler)
   groups.addSelectHandler(groupHandler)
   chat.addSendMessageHandler(messageHandler)
@@ -202,6 +203,30 @@ function init() {
   })
 
   socket.emit('ping')
+
+  socket.on('connect_error', () => {
+    setTimeout(() => {
+      socket.connect()
+    }, 1000)
+  })
+
+  socket.on('reconnect', () => {
+    console.log('reconnected')
+  })
+  socket.on('reconnect', () => {
+    console.log('reconnect')
+  })
+  socket.io.on('reconnection_attempt', () => {
+    console.log('reconnection attempted')
+  })
+
+  socket.on('disconnect', (reason) => {
+    if (reason === 'io server disconnect') {
+      // the disconnection was initiated by the server, you need to reconnect manually
+      socket.connect()
+    }
+    // else the socket will automatically try to reconnect
+  })
 
   addEvents()
 }

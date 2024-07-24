@@ -90,4 +90,9 @@ export default class View {
     const markUp = `<p>Error</p>`
     this._parentEl.insertAdjacentHTML('beforeEnd', markUp)
   }
+  toggleLightMode() {
+    addEvent('dblclick', 'html', () => {
+      document.querySelector('html').classList.toggle('light')
+    })
+  }
 }

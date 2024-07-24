@@ -1,4 +1,5 @@
 const { GoogleGenerativeAI } = require('@google/generative-ai')
+const messageModel = require('../models/chat/messageModel')
 // import dotenv from 'dotenv'
 // dotenv.config()
 
@@ -16,10 +17,44 @@ const geminiModel = googleAI.getGenerativeModel({
   geminiConfig,
 })
 
-const generateChat = async (prompt, handleMessage) => {
+const generateChat = async (
+  { message: prompt, sender, receiver },
+  handleMessage
+) => {
+  const messages = await messageModel.find({
+    $or: [
+      { sender, receiver },
+      { sender: receiver, receiver: sender },
+    ],
+  })
+  const history = messages.map((message) => {
+    return {
+      role: sender === process.env.GOOGLE_AI_ID ? 'model' : 'user',
+      parts: [{ text: message.message }],
+    }
+  })
+
+  // const history = [
+  //   {
+  //     role: 'user',
+  //     parts: [
+  //       {
+  //         text: 'Hello, I have 2 dogs in my house.',
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     role: 'model',
+  //     parts: [
+  //       {
+  //         text: 'Great to meet you.',
+  //       },
+  //     ],
+  //   },
+  // ]
   try {
     const chat = geminiModel.startChat({
-      history: [],
+      history,
       generationConfig: {
         maxOutputTokens: 1000,
       },

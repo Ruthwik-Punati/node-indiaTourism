@@ -56,11 +56,14 @@ class GroupChat extends View {
     sameSenderAsPrev &&
       this._element()
         ?.querySelector('.messages')
-        ?.lastElementChild?.classList?.remove(
+        ?.lastElementChild?.classList?.add(
           isSenderTheUser ? 'bbrr-0' : 'bblr-0'
         )
 
-    const newMessage = groupMessage.render({ item: msg, prevItem: prevMsg })
+    const newMessage = groupMessage.render({
+      item: msg,
+      prevItem: prevMsg,
+    })
     this._element()
       .querySelector('.messages')
       .insertAdjacentHTML('beforeend', newMessage)

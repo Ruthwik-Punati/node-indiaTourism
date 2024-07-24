@@ -24,6 +24,13 @@
   border-bottom-right-radius: unset !important;
 }
 
+.btlr-0 {
+  border-top-left-radius: unset !important;
+}
+.btrr-0 {
+  border-top-right-radius: unset !important;
+}
+
 .bg-img {
   background-image: url(./assets/photos/wallpaper-2.jpg);
 
@@ -51,6 +58,16 @@
   --color-secondary: #b3b3b3;
   --color-ternary: #999999;
 }
+
+.light {
+  --bg-primary: #e6e6e6;
+  --bg-secondary: #bdc1d7;
+  --bg-ternary: #484f7d;
+  --color-primary: #1a1a1a;
+  --color-secondary: #333333;
+  --color-ternary: #5a5a5a;
+}
+
 html {
   background-color: #43434380;
   font-size: 62.5%;
@@ -117,6 +134,7 @@ body {
   top: 0;
   padding: 1rem;
   background-color: var(--bg-primary);
+  border-radius: unset;
 }
 
 .contactCard .name {

@@ -57,7 +57,7 @@ class Chat extends View {
     sameSenderAsPrev &&
       this?._element()
         ?.querySelector('.messages')
-        ?.lastElementChild?.classList?.remove(
+        ?.lastElementChild?.classList?.add(
           isSenderTheUser ? 'bbrr-0' : 'bblr-0'
         )
 

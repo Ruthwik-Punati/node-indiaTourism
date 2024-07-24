@@ -14,10 +14,10 @@ class Message extends View {
       <p class="msg ${item.sender !== user._id ? 'msg-left' : 'msg-right'} ${
       sameSenderAsPrev ? 'mt-sm' : 'mt-md'
     }    
-     ${
-       (!sameSenderAsNext || !nextItem) &&
-       (!isSenderTheUser ? 'bblr-0' : 'bbrr-0')
-     }
+
+    ${sameSenderAsPrev ? (isSenderTheUser ? 'btrr-0' : 'btlr-0') : ''}
+    ${sameSenderAsNext ? (isSenderTheUser ? 'bbrr-0' : 'bblr-0') : ''}
+
     ">${item.message}
              <span class="sent-at"> ${changeTimeFormat(
                new Date(item.sentAt)

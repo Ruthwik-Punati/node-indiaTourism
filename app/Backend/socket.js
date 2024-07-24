@@ -115,7 +115,7 @@ const ioInit = function (server) {
         //   return
         // }
 
-        generateChat(message, async function (message) {
+        generateChat({ sender, receiver, message }, async function (message) {
           await handleMessage(receiver, sender, message)
         })
       }
