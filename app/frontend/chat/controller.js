@@ -233,6 +233,12 @@ function init() {
 
 init()
 
+window.history.pushState(null, null, window.location.href)
+window.onpopstate = function () {
+  window.history.go(1)
+  emitContacts()
+}
+
 // setTimeout(() => {
 //   alert(`Notification setting is ${perm}`)
 // }, 1000)

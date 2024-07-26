@@ -27,7 +27,7 @@ export function getModLastMsg(lastMsg) {
   return `${lastMsg.substr(0, 35) + (lastMsg.length > 35 ? '...' : '')}`
 }
 
-export function stringToHslColor(str, s = '50', l = '80', a = '0.8') {
+export function stringToHslColor(str, s = '60', l = '50', a = '.8') {
   var hash = 0
   for (var i = 0; i < str.length; i++) {
     hash = str.charCodeAt(i) + ((hash << 5) - hash)
