@@ -99,7 +99,7 @@ function groupMessageHandler(groupMessage) {
 }
 
 function addEvents() {
-  chat.toggleLightMode()
+  // chat.toggleLightMode()
   onlyContacts.addSelectHandler(contactHandler)
   groups.addSelectHandler(groupHandler)
   chat.addSendMessageHandler(messageHandler)
