@@ -20,7 +20,23 @@ const ioInit = function (server) {
   })
   io.adapter(createAdapter())
   setupWorker(io)
+
+  io.use((socket, next) => {
+    const _id = socket.handshake.auth._id
+    if (!_id) {
+      return next(new Error('invalid username'))
+    }
+    socket._id = _id
+    next()
+  })
   io.on('connection', (socket) => {
+    function sendMsgToUsers(users, message) {
+      for (let [id, socket] of io.of('/').sockets) {
+        if (users.includes(socket._id)) {
+          io.to(socket.id).emit('message', message)
+        }
+      }
+    }
     console.log('New user connected')
     //emit message from server to user
 
@@ -54,11 +70,11 @@ const ioInit = function (server) {
 
       contactsInInbox.with = [...contactsInInbox.with, ...usersNotInContacts]
       contactsInInbox.with.forEach((contact) => {
-        socket.join(createRoomId(user, contact.user._id.toString()))
+        // socket.join(createRoomId(user, contact.user._id.toString()))
       })
 
       groups.forEach((group) => {
-        socket.join(group._id.toString())
+        // socket.join(group._id.toString())
       })
       const contacts = { ...contactsInInbox._doc, groups }
 
@@ -148,7 +164,8 @@ const ioInit = function (server) {
       }
 
       try {
-        io.sockets.in(createRoomId(sender, receiver)).emit('message', msg)
+        sendMsgToUsers([sender, receiver], msg)
+        // io.sockets.in(createRoomId(sender, receiver)).emit('message', msg)
       } catch (err) {
         console.error(err)
       }

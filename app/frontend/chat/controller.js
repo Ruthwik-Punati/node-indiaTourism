@@ -1,6 +1,5 @@
 import { io } from 'socket.io-client'
 console.log('web sockets')
-const socket = io()
 
 import contacts from './views/contacts'
 import chat from './views/chat'
@@ -15,6 +14,14 @@ import contactList from './views/contactList'
 
 import onlyContacts from './views/onlyContacts'
 import groupMessages from './views/groupMessages'
+
+model.setUser()
+const user = model.getUser()
+const socket = io({ autoConnect: false })
+const _id = user._id
+
+socket.auth = { _id }
+socket.connect()
 
 navigator.serviceWorker.register(new URL('sw.js', import.meta.url))
 
@@ -31,9 +38,6 @@ function sendNotification(sender, message) {
     })
   }
 }
-
-model.setUser()
-const user = model.getUser()
 
 function contactHandler(contactName) {
   if (model.getPage() === 'contact') return
