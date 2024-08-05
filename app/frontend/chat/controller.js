@@ -27,14 +27,17 @@ navigator.serviceWorker.register(new URL('sw.js', import.meta.url))
 
 const perm = await Notification.requestPermission()
 
-function sendNotification(sender, message) {
+function sendNotification(sender, message, groupName) {
   if (perm === 'granted') {
     navigator.serviceWorker.ready.then((registration) => {
-      registration.showNotification(sender, {
-        body: message,
-        icon: 'boyonmoon.png',
-        vibrate: [200, 100, 200, 100, 200, 100, 200],
-      })
+      registration.showNotification(
+        `${groupName ? groupName + ' > ' : ''}${sender}`,
+        {
+          body: message,
+          icon: 'boyonmoon.png',
+          vibrate: [200, 100, 200, 100, 200, 100, 200],
+        }
+      )
     })
   }
 }
@@ -169,7 +172,7 @@ function init() {
 
     if (!isSenderTheUser) {
       if (!isGroupSelectedGroup || document.hidden) {
-        sendNotification(senderName, groupMessage.message)
+        sendNotification(senderName, groupMessage.message, 'Dream Team')
       }
     }
 
