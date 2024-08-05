@@ -30,10 +30,10 @@ const ioInit = function (server) {
     next()
   })
   io.on('connection', (socket) => {
-    function sendMsgToUsers(users, message) {
+    function sendMsgToUsers(users, message, msgEvntType = 'message') {
       for (let [id, socket] of io.of('/').sockets) {
         if (users.includes(socket._id)) {
-          io.to(socket.id).emit('message', message)
+          io.to(socket.id).emit(msgEvntType, message)
         }
       }
     }
@@ -69,13 +69,13 @@ const ioInit = function (server) {
       })
 
       contactsInInbox.with = [...contactsInInbox.with, ...usersNotInContacts]
-      contactsInInbox.with.forEach((contact) => {
-        // socket.join(createRoomId(user, contact.user._id.toString()))
-      })
+      // contactsInInbox.with.forEach((contact) => {
+      //   // socket.join(createRoomId(user, contact.user._id.toString()))
+      // })
 
-      groups.forEach((group) => {
-        // socket.join(group._id.toString())
-      })
+      // groups.forEach((group) => {
+      //   // socket.join(group._id.toString())
+      // })
       const contacts = { ...contactsInInbox._doc, groups }
 
       socket.emit('contacts', contacts)
@@ -94,8 +94,11 @@ const ioInit = function (server) {
         message,
       })
 
-      await Group.findByIdAndUpdate(group, { $set: { lastMsg: msg._id } })
-      io.sockets.in(group).emit('groupMessage', msg)
+      const groupInDb = await Group.findByIdAndUpdate(group, {
+        $set: { lastMsg: msg._id },
+      })
+
+      sendMsgToUsers(groupInDb.users, msg, 'groupMessage')
     })
 
     socket.on('messages', async (user, chatWith) => {

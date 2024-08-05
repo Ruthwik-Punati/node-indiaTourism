@@ -29,7 +29,7 @@ process.on('unhandledRejection', (err) => {
 
 const port = 80
 
-cluster.schedulingPolicy = cluster.SCHED_RR
+// cluster.schedulingPolicy = cluster.SCHED_RR
 if (cluster.isMaster) {
   console.log(`Primary ${process.pid} is running`)
 
