@@ -59,6 +59,8 @@ if (cluster.isMaster) {
 } else {
   // Workers can share any TCP connection
   // In this case it is an HTTP server
+
+  // Here we listen
   const server = app.listen(port, () => {
     console.log(`server started on port ${port} on worker  ${process.pid}`)
   })
